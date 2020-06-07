@@ -18,9 +18,9 @@ $(document).ready(function(){
     let Iam;
     let Index;
     let Title_Modal;
-    $('.tablinksCalc').click(function(){
+    $('.tabCalc-link').click(function(){
         Iam=$(this);
-        Index=Iam.closest('.tabCalc').find('.tablinksCalc').index(Iam);
+        Index=Iam.closest('.tabCalc-links').find('.tabCalc-link').index(Iam);
         Title_Modal=Iam.val();
         AddRemove_Active();
         ShowHide_tabel ();
@@ -28,7 +28,7 @@ $(document).ready(function(){
     });
 
     function AddRemove_Active(){
-        Iam.closest('.tabCalc').find('.tablinksCalc').each(function(index){
+        Iam.closest('.tabCalc-links').find('.tabCalc-link').each(function(index){
             $(this).removeClass('active');
         });
         Iam.addClass('active');
@@ -51,8 +51,7 @@ $(document).ready(function(){
 
 //=========================добавление/удаление прыжка в модальном окне==================
 $(document).ready(function() {
-    let Iam;
-    let Index;
+   let Iam;
    $('.JS_AddJump').click(function() {
 
         $(this).closest('.JS_Section-Jumps').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
@@ -62,3 +61,18 @@ $(document).ready(function() {
     })
 })
 //=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
+
+//====================вызов вкладки для выбора значения атрибута элемента==========
+$(document).ready(function() {
+    let Iam;
+    let ID;
+    $('.JS_Button-CallModal').click(function() {
+        Iam=$(this);
+        ID='#'+Iam.attr('name');
+        Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').each(function(index) {
+            $(this).addClass('hide');
+        })
+        $(ID).removeClass('hide');
+    })
+})
+//====================КОНЕЦ вызов вкладки для выбора значения атрибута элемента==========
