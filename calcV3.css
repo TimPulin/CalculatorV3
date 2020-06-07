@@ -22,6 +22,7 @@
 /*КОНЕЦ стили вывода имени элемента в таблице*/
 
 /*==============================стили всплывающего окна===============================*/
+
 .bg-ccc{
     background-color: #ccc;
 }
@@ -68,9 +69,9 @@
 }
 .tabCalc-links button {
     font-size: 18px;
+    font-weight:500;
     margin-top: -2px;
     background-color: inherit;
-    font-weight:500;
     border-right: 2px solid  #aaa;
     border-top: 2px solid #aaa;
     border-bottom: 2px solid #aaa;
@@ -80,22 +81,20 @@
     padding: 2px 20px;
 	transition: 0.3s;
 }
+@media (max-width:575px) {
+    .tabCalc-links button{
+        font-weight:500;
+        padding: 2px 6px;
+    }
+}
 .tabCalc-links button.active{
     background-color:#f3f4f8 ;
     border-top: 2px solid #f3f4f8;
-   /* box-shadow: 2px 3px 5px 0 #ea84ff , .1em .1em .2em #666;
-    -webkit-box-shadow: 0 1 10px 10px  #ea84ff;
-    -moz-box-shadow: 0 1 10px 10px  #ea84ff;*/
 }
 /*КОНЕЦ стили заклдок в модальном окне*/
 /*==============================стили кнопок*/
 .JS_Galka{width: 45px;}
-.buttonMoveJump{
-    margin: 0 5px;
-    display: inline;
 
-    box-sizing: border-box;
-}
 .buttonFlat{
 	text-decoration: none !important;
 	outline: none !important;
@@ -104,8 +103,15 @@
 .buttonFlat:active{
     box-shadow:1px 1px 1px 1px #000 inset, -1px -1px 1px 1px #fff inset;
 }
+
+@media (max-width:575px){
+  .JS_RemoveJump, .JS_AddJump{
+    width: 100%;
+}
+}
+
 /*КОНЕЦ стили кнопок*/
 
-
+/*td{border:1px solid black;}*/
 
 /*стили всплывающего окна*/
