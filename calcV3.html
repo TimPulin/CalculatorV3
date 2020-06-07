@@ -7,14 +7,14 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://calculatorfs.ru/css/bootstrap.min.css">
-		<link rel="stylesheet" href="index.css?version=4">
+		<link rel="stylesheet" href="index.css?version=1">
 		<link rel="stylesheet" href="calcV3.css?version=1">
 	</head>
 	<body>
 
 <div class="modal fade" id="ElementModal" tabindex="-1" role="dialog" aria-labelledby="windowElementLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
-         <div class="modal-content JS_Section-modal bg-ccc rounded" ><!--content-->
+         <div class="modal-content JS_Section-modal bg-ccc rounded" ><!--modal content-->
 			<div class="mod-header">
 				<div class="JS_Section" id="header_title">
 					<div class="header-box text-center">
@@ -60,18 +60,18 @@
 			<div class="mod-body JS_Section-tables tabCalc-wrap">
 						<div class="wrap-tables">
 							<!--========================step========================-->
-							<div class="JS_Tab JS_Section-Step hide">
-								<table class="table JS_TableStep">
+
+								<table class="table JS_Section-Table tabCalc-content hide">
 									<tr class="JS_Section-El">
 										<td ><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="steps" value="дорожка"></td>
 										<td><input type="button" class="JS_Level JS_Button JS_Button-CallModal buttonFlat" name="levels" value="B"></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 								</table><!--end table step-->
-							</div><!--end JS_Step-->
+
 							<!--============================spins=====================================-->
-							<div class="JS_Tab JS_Section-Spin hide">
-								<table class="table JS_TableSpin">
+
+								<table class="table JS_Section-Table tabCalc-content hide">
 									<tr class="JS_Section-El">
 										<td ><input type="button" class=" JS_Fly JS_Button  buttonFlat" value="F"></td>
 										<td><input type="button" class="JS_ChangeLeg JS_Button  buttonFlat" value="C"></td>
@@ -80,13 +80,19 @@
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 								</table><!--end table spin-->
-							</div><!--end JS_Spin-->
+
 							<!--=====================================jump=======================-->
-							<div class="JS_Tab JS_Section-Jumps">
-								<table class="table JS_TableJump">
+
+								<table class="table JS_Section-Table tabCalc-content">
+									<tr>
+										<td colspan="5">
+											<button class="buttonFlat JS_RemoveJump float-left">убрать прыжок</button>
+											<button class="buttonFlat JS_AddJump float-right">добавить прыжок</button>
+										</td>
+									</tr>
 									<!--first jump-->
 									<tr class="JS_Section-El">
-										<td ><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
+										<td class="float-left"><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
 										<td ><input type="button" class=" JS_Rotation JS_Button JS_Button-CallModal  buttonFlat" name="rotations" value="0"></td>
 										<td>
 											<input type="button" class="JS_Galka JS_Button  buttonFlat" value="<">
@@ -97,7 +103,7 @@
 									</tr>
 									<!--second jump-->
 									<tr class="JS_Section-El hide">
-										<td ><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps"  value="прыжок"></td>
+										<td class="float-left"><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps"  value="прыжок"></td>
 										<td ><input type="button" class=" JS_Rotation JS_Button JS_Button-CallModal buttonFlat" name="rotations" value="0"></button></td>
 										<td>
 											<input type="button" class="JS_Galka JS_Button buttonFlat" value="<">
@@ -108,7 +114,7 @@
 									</tr>
 									<!--fird jump-->
 									<tr class="JS_Section-El hide">
-										<td ><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
+										<td class="float-left"><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
 										<td ><input type="button" class=" JS_Rotation JS_Button JS_Button-CallModal buttonFlat" name="rotations" value="0"></td>
 										<td>
 											<input type="button" class="JS_Galka JS_Button buttonFlat" value="<">
@@ -117,11 +123,8 @@
 										<td ><input type="button" class="JS_Edge JS_Button buttonFlat" value="e"></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
-								</table><!--end table jumps-->
-								<button class="buttonFlat buttonMoveJump JS_AddJump float-right">добавить прыжок</button>
-								<button class="buttonFlat buttonMoveJump JS_RemoveJump">убрать прыжок</button>
 
-							</div><!--end JS_Jumps-->
+								</table><!--end table jumps-->
 						</div><!-- end wrap-tables-->
 						<div class="tabCalc-links">
 							<button class="tabCalc-link" value="Дорожка">Дорожка</button>
@@ -135,7 +138,7 @@
 			</div>
 
          </div><!--end content-->
-	 </div><!--end madal-dialog-->
+	 </div><!--end modal-dialog-->
 </div><!--end modal-window-->
 		<main class="row"><!-- ряд (основной)-->
 			<div class="col-lg-10 offset-lg-1"><!--первая колонка (калькулятор)-->
@@ -166,5 +169,5 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://calculatorfs.ru/js/bootstrap.min.js?version=3"></script>
-		<script src="calcV3.js?version=1"></script>
+		<script src="calcV3.js?version=2"></script>
 	</body>
