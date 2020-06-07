@@ -39,3 +39,17 @@ $(document).ready(function(){
     };
 });
 //========================КОНЕЦ Переключение вкладок в модальном окне==
+
+//=========================добавление/удаление прыжка в модальном окне==================
+$(document).ready(function() {
+    let Iam;
+    let Index;
+   $('.JS_AddJump').click(function() {
+
+        $(this).closest('.JS_Section-Jumps').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
+   })
+    $('.JS_RemoveJump').click(function() {
+        $(this).closest('.JS_Section-Jumps').find('.JS_Section-El.active:first').removeClass('active').addClass('hide');
+    })
+})
+//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
