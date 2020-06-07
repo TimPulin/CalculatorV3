@@ -11,6 +11,7 @@ $('.JS_Button_ResetModal').click(function() {
 })
 function HideModal() {$('#ElementModal').modal('hide');}
 //КОНЕЦ закрытие модального окна
+
 //===========================Поведение кнопок=========================================
 
 //========================Переключение вкладок в модальном окне==
@@ -24,6 +25,7 @@ $(document).ready(function(){
         Title_Modal=Iam.val();
         AddRemove_Active();
         ShowHide_tabel ();
+        ShowHeader();
         Print_Title_Modal();
     });
 
@@ -35,7 +37,7 @@ $(document).ready(function(){
     };
 
     function ShowHide_tabel(){
-        Iam.closest('.JS_Section-tables').find('.JS_Tab').each(function(index){
+        Iam.closest('.tabCalc-wrap').find('.tabCalc-content').each(function(index){
             if (index==Index){
                 $(this).removeClass('hide');
             }
@@ -43,36 +45,47 @@ $(document).ready(function(){
         });
     };
 
+    function ShowHeader() {
+        Hide_HeadersSections(Iam);
+        $('#header_title').removeClass('hide');
+    }
+
     function Print_Title_Modal(){
         Iam.closest('.JS_Section-modal').find('.header-title').html(Title_Modal);
     };
 });
 //========================КОНЕЦ Переключение вкладок в модальном окне==
 
-//=========================добавление/удаление прыжка в модальном окне==================
-$(document).ready(function() {
-   let Iam;
-   $('.JS_AddJump').click(function() {
-
-        $(this).closest('.JS_Section-Jumps').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
-   })
-    $('.JS_RemoveJump').click(function() {
-        $(this).closest('.JS_Section-Jumps').find('.JS_Section-El.active:first').removeClass('active').addClass('hide');
-    })
-})
-//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
-
-//====================вызов вкладки для выбора значения атрибута элемента==========
+//====================вызов экрана для выбора значения атрибута элемента==========
 $(document).ready(function() {
     let Iam;
     let ID;
     $('.JS_Button-CallModal').click(function() {
         Iam=$(this);
         ID='#'+Iam.attr('name');
-        Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').each(function(index) {
-            $(this).addClass('hide');
-        })
+        Hide_HeadersSections(Iam)
         $(ID).removeClass('hide');
     })
 })
-//====================КОНЕЦ вызов вкладки для выбора значения атрибута элемента==========
+//====================КОНЕЦ вызов экрана "выбор значения атрибута элемента"==========
+
+//=======================закрытие экранов "выбор значения атрибута элемента"=======
+function Hide_HeadersSections(Iam) {
+    Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').each(function(index) {
+        $(this).addClass('hide');
+    })
+    return;
+}
+//=======================КОНЕЦ закрытие экранов "выбор значения атрибута элемента"=======
+
+//=========================добавление/удаление прыжка в модальном окне==================
+$(document).ready(function() {
+   let Iam;
+   $('.JS_AddJump').click(function() {
+        $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
+   })
+    $('.JS_RemoveJump').click(function() {
+        $(this).closest('.JS_Section-Table').find('.JS_Section-El.active:first').removeClass('active').addClass('hide');
+    })
+})
+//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
