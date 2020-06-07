@@ -1,7 +1,16 @@
+//вызов модального окна
 jQuery('.boxoutput-name').click(function(){
     $('#ElementModal').modal();
 });
-
+//закрытие модального окна
+$('.JS_Button_SaveModal').click(function() {
+     HideModal();
+})
+$('.JS_Button_ResetModal').click(function() {
+     HideModal();
+})
+function HideModal() {$('#ElementModal').modal('hide');}
+//КОНЕЦ закрытие модального окна
 //===========================Поведение кнопок=========================================
 
 //========================Переключение вкладок в модальном окне==
