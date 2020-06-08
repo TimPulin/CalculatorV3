@@ -49,6 +49,7 @@ $(document).ready(function(){
     function ResetModal() {
         Iam.closest('.JS_Section-modal').find('.JS_Button').removeClass('active activeColor');
         Iam.closest('.JS_Section-modal').find('.header-name').val('');
+         Iam.closest('.JS_Section-modal').find('.header-value').val('0.00');
         return;
     }
 
