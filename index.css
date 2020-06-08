@@ -656,7 +656,7 @@ blockquote {
 }
 
 button:disabled{color:#999;}
-
+input:disabled{color: #999;}
 select{
 	-webkit-appearance: none !important;
 	-moz-appearance: none !important;
