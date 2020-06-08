@@ -20,10 +20,14 @@
 					<div class="header-box text-center">
 						<output class="header-title">Прыжок</output>
 					</div>
-					<div class="header-box">
-						<output class="header-name">2A<</output>
-						<output class="header-value float-right">0.00</output>
-					</div>
+					<table class="table">
+						<tr>
+							<td>
+								<output class="header-name float-left"></output>
+								<output class="header-value float-right">0.00</output>
+							</td>
+						</tr>
+					</table>
 				</div><!--end section with title-->
 				<!--rotations-->
 				<div class="JS_Section hide" id="rotations">
@@ -56,6 +60,49 @@
 						</tr>
 					</table>
 				</div><!--end jumps-->
+				<!--=======================levels========================-->
+				<div class="JS_Section hide" id="levels">
+					<div class="header-box text-center">
+						Уровни
+					</div>
+					<table class="table">
+						<tr>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="B"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="1"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="2"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="3"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="4"></td>
+						</tr>
+					</table>
+				</div><!--edn levels-->
+				<!--=======================spins========================-->
+				<div class="JS_Section hide" id="spins">
+					<div class="header-box text-center">
+						Вращения
+					</div>
+					<table class="table">
+						<tr>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="UpSp"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="CSp"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="SSp"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="CoSp"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="LSp"></td>
+						</tr>
+					</table>
+				</div><!--edn spins-->
+				<!--=======================steps========================-->
+				<div class="JS_Section hide" id="steps">
+					<div class="header-box text-center">
+						Дорожки
+					</div>
+					<table class="table">
+						<tr>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="StSq"></td>
+							<td><input type="button" class="JS_ButtonModal buttonGuideBasic" value="ChSq"></td>
+						</tr>
+					</table>
+				</div><!--edn steps-->
+
 			</div><!--end header-->
 			<div class="mod-body JS_Section-tables tabCalc-wrap">
 						<div class="wrap-tables">
@@ -63,8 +110,8 @@
 
 								<table class="table JS_Section-Table tabCalc-content hide">
 									<tr class="JS_Section-El">
-										<td ><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="steps" value="дорожка"></td>
-										<td><input type="button" class="JS_Level JS_Button JS_Button-CallModal buttonFlat" name="levels" value="B"></td>
+										<td ><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="steps" value="дорожка"></td>
+										<td><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="levels" value="B"></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 								</table><!--end table step-->
@@ -73,10 +120,11 @@
 
 								<table class="table JS_Section-Table tabCalc-content hide">
 									<tr class="JS_Section-El">
-										<td ><input type="button" class=" JS_Fly JS_Button  buttonFlat" value="F"></td>
-										<td><input type="button" class="JS_ChangeLeg JS_Button  buttonFlat" value="C"></td>
-										<td ><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="spins" value="вращение"></td>
-										<td><input type="button" class="JS_Level JS_Button JS_Button-CallModal  buttonFlat" name="levels" value="B"></td>
+										<td ><input type="button" class="JS_Button JS_Button-Toggle  buttonFlat" value="F"></td>
+										<td><input type="button" class="JS_Button JS_Button-Toggle  buttonFlat" value="C"></td>
+										<td ><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="spins" value="вращение"></td>
+										<td><input type="button" class="JS_Button JS_Button-CallModal  buttonFlat" name="levels" value="B"></td>
+										<td><input type="button" class="JS_Button JS_Button-Toggle  buttonFlat" value="V"></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 								</table><!--end table spin-->
@@ -92,35 +140,35 @@
 									</tr>
 									<!--first jump-->
 									<tr class="JS_Section-El">
-										<td class="float-left"><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
-										<td ><input type="button" class=" JS_Rotation JS_Button JS_Button-CallModal  buttonFlat" name="rotations" value="0"></td>
+										<td class="float-left"><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
+										<td ><input type="button" class="JS_Button JS_Button-CallModal  buttonFlat" name="rotations" value="1"></td>
 										<td>
-											<input type="button" class="JS_Galka JS_Button  buttonFlat" value="<">
-											<input type="button" class="JS_Galka JS_Button  buttonFlat" value="<<">
+											<input type="button" class="JS_Button  JS_Button-Switch buttonFlat buttonGalka" value="<">
+											<input type="button" class="JS_Button JS_Button-Switch buttonFlat buttonGalka" value="<<">
 										</td>
-										<td ><input type="button" class="JS_Edge JS_Button buttonFlat" value="e"></td>
+										<td ><input type="button" class="JS_Button JS_Button-Toggle buttonFlat" value="e"></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 									<!--second jump-->
 									<tr class="JS_Section-El hide">
-										<td class="float-left"><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps"  value="прыжок"></td>
-										<td ><input type="button" class=" JS_Rotation JS_Button JS_Button-CallModal buttonFlat" name="rotations" value="0"></button></td>
+										<td class="float-left"><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="jumps"  value="прыжок"></td>
+										<td ><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="rotations" value="1"></button></td>
 										<td>
-											<input type="button" class="JS_Galka JS_Button buttonFlat" value="<">
-											<input type="button" class="JS_Galka JS_Button buttonFlat" value="<<">
+											<input type="button" class="JS_Button JS_Button-Switch buttonFlat buttonGalka" value="<">
+											<input type="button" class="JS_Button JS_Button-Switch buttonFlat buttonGalka" value="<<">
 										</td>
-										<td ><input type="button" class="JS_Edge JS_Button buttonFlat" value="e"></button></td>
+										<td ><input type="button" class="JS_Button JS_Button-Toggle buttonFlat" value="e"></button></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 									<!--fird jump-->
 									<tr class="JS_Section-El hide">
-										<td class="float-left"><input type="button" class="JS_Name JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
-										<td ><input type="button" class=" JS_Rotation JS_Button JS_Button-CallModal buttonFlat" name="rotations" value="0"></td>
+										<td class="float-left"><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="jumps" value="прыжок"></td>
+										<td ><input type="button" class="JS_Button JS_Button-CallModal buttonFlat" name="rotations" value="1"></td>
 										<td>
-											<input type="button" class="JS_Galka JS_Button buttonFlat" value="<">
-											<input type="button" class="JS_Galka JS_Button buttonFlat" value="<<">
+											<input type="button" class="JS_Button JS_Button-Switch buttonFlat buttonGalka" value="<">
+											<input type="button" class="JS_Button JS_Button-Switch buttonFlat buttonGalka" value="<<">
 										</td>
-										<td ><input type="button" class="JS_Edge JS_Button buttonFlat" value="e"></td>
+										<td ><input type="button" class="JS_Button JS_Button-Toggle buttonFlat" value="e"></td>
 										<td ><output class="JS_output-valueOfElement">0.00</output></td>
 									</tr>
 
@@ -132,9 +180,9 @@
 							<button class="tabCalc-link active" value="Прыжок">Прыжок</button>
 						</div>
 			</div><!--end mod-body-->
-			<div class="mod-footer">
-				<button class="JS_Button_SaveModal buttonFlat float-right">Сохранить</button>
+			<div class="modal-footer">
 				<button class="JS_Button_ResetModal buttonFlat">Сброс</button>
+				<button class="JS_Button_SaveModal buttonFlat">Сохранить</button>
 			</div>
 
          </div><!--end content-->
