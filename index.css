@@ -4,9 +4,16 @@ body{
     font-size: 18px;
 }/*f3f4f8*/
 
-table {
-    box-sizing: border-box;
+/*работа с таблицами*/
+@media (max-width:575px) {
+    /*.table{font-size: 15px !important;}*/
 }
+table {box-sizing: border-box;}
+table.CSStableGoe td {text-align:left;}
+th,td{text-align: center;}
+
+/*КОНЕЦ работа с таблицами*/
+
 
 /*body{background:#e0e0e0;}*/
 .bg-body{background: #f3f4f8;}
@@ -126,11 +133,7 @@ li.list_of_element {list-style-type: circle}
 /*КОНЕЦ стили на разные случаи*/
 
 
-/*работа с таблицами*/
-table.CSStableGoe td {text-align:left;}
-th,td{text-align: center;}
 
-/*КОНЕЦ работа с таблицами*/
 
 ul{
 	padding-top: 0;
@@ -615,9 +618,7 @@ blockquote {
 /*-----------------------------------КОНЕЦ стили материала-------------------------------------------*/
 /*-----------------------------------стили таблиц----------------------------------*/
 
-@media (max-width:575px) {
-    .table{font-size: 15px !important;}
-}
+
 
 
 
@@ -629,11 +630,17 @@ blockquote {
 	color: #000;
 	outline: none !important;
 	border-radius: 5px;
-	box-shadow: 0 0 0 60px rgba(230,152,122,0) inset, .1em .1em .2em #666;}
+	box-shadow: .1em .1em .2em #666;
+    -webkit-box-shadow:.1em .1em .2em #666;
+    -moz-box-shadow:.1em .1em .2em #666;
+}
 .buttonGuideBasic:active {
 	top: .1em;
 	left: .1em;
-	box-shadow: 0 0 0 60px rgba(230,152,122,.05) inset;}
+    box-shadow:0 0 0 0 #ccc;
+    -webkit-box-shadow:0 0 0 0 #ccc;
+     -moz-box-shadow:0 0 0 0 #ccc;
+}
 
 .bg-violet {background:#ea84ff;}
 .bg-light_grey{background:#e7e8eb;}
@@ -672,7 +679,6 @@ select{
    font-weight:600;
    border:2px solid  #fff;
     float: left;
-
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
