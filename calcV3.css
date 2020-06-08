@@ -42,7 +42,7 @@
 .header-box{width:100%;}
 .header-name, .header-value{
     margin-top:1px ;
-    height: 18px;
+    /*height: 18px;*/
 }
 .mod-header .table {margin-top: 10px; margin-bottom: 0;}
 /*КОНЕЦ стили шапки модульного окна*/
