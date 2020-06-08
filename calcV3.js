@@ -24,6 +24,7 @@ $(document).ready(function(){
         Index=Iam.closest('.tabCalc-links').find('.tabCalc-link').index(Iam);
         Title_Modal=Iam.val();
         AddRemove_Active();
+        ResetModal();
         ShowHide_tabel ();
         ShowHeader();
         Print_Title_Modal();
@@ -45,6 +46,12 @@ $(document).ready(function(){
         });
     };
 
+    function ResetModal() {
+        Iam.closest('.JS_Section-modal').find('.JS_Button').removeClass('active activeColor');
+        Iam.closest('.JS_Section-modal').find('.header-name').val('');
+        return;
+    }
+
     function ShowHeader() {
         Hide_HeadersSections(Iam);
         $('#header_title').removeClass('hide');
@@ -53,21 +60,11 @@ $(document).ready(function(){
     function Print_Title_Modal(){
         Iam.closest('.JS_Section-modal').find('.header-title').html(Title_Modal);
     };
+
 });
 //========================КОНЕЦ Переключение вкладок в модальном окне==
 
-//====================вызов экрана для выбора значения атрибута элемента==========
-$(document).ready(function() {
-    let Iam;
-    let ID;
-    $('.JS_Button-CallModal').click(function() {
-        Iam=$(this);
-        ID='#'+Iam.attr('name');
-        Hide_HeadersSections(Iam)
-        $(ID).removeClass('hide');
-    })
-})
-//====================КОНЕЦ вызов экрана "выбор значения атрибута элемента"==========
+
 
 //=======================закрытие экранов "выбор значения атрибута элемента"=======
 function Hide_HeadersSections(Iam) {
@@ -80,7 +77,6 @@ function Hide_HeadersSections(Iam) {
 
 //=========================добавление/удаление прыжка в модальном окне==================
 $(document).ready(function() {
-   let Iam;
    $('.JS_AddJump').click(function() {
         $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
    })
@@ -89,3 +85,67 @@ $(document).ready(function() {
     })
 })
 //=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
+
+//===============================активация кнопок при выборе значения атрибута==========
+$(document).ready(function() {
+    let Iam;
+
+    $('.JS_Button-Toggle').click(function() {
+        $(this).toggleClass('active activeColor');
+    })
+
+    $('.JS_Button-Switch').click(function() {
+        Iam=$(this);
+        Iam.toggleClass('active activeColor');
+        Iam.parent().find('.JS_Button-Switch').not(Iam).each(function(index){
+            jQuery(this).removeClass('active activeColor');
+        })
+    })
+})
+//===============================КОНЕЦ поведение кнопок при выборе значения атрибута==========
+
+//====================вызов экрана для выбора значения атрибута элемента и обратная связь==========
+$(document).ready(function() {
+    let Iam;
+    let Iam_CallModal;
+    let Val_IamCalModal;
+    let Val_ButtonModal;
+    let ID;
+
+    $('.JS_Button-CallModal').click(function() {
+        Iam_CallModal=$(this);
+        Val_IamCalModal=$(this).val();
+        ID='#'+Iam_CallModal.attr('name');
+        Hide_HeadersSections(Iam_CallModal)
+        $(ID).removeClass('hide');
+        addClassActiveTo_JS_ButtonModal();
+    })
+
+    $('.JS_ButtonModal').click(function() {
+        Iam=$(this);
+        Val_ButtonModal=Iam.val();
+        Iam.closest('.JS_Section').find('.JS_ButtonModal').each(function(index){
+            jQuery(this).removeClass('active activeColor');
+        })
+        Iam.addClass('active activeColor');
+        Hide_HeadersSections(Iam);
+        $('#header_title').removeClass('hide');
+        AddInMain_ValButtonModal();
+    })
+
+    function addClassActiveTo_JS_ButtonModal(){
+        $(ID).find(".JS_ButtonModal").each(function(index){
+            jQuery(this).removeClass('active activeColor');
+            if(Val_IamCalModal==jQuery(this).val()){
+                jQuery(this).addClass('active activeColor');
+            };
+        });
+    };
+    function AddInMain_ValButtonModal(){
+        Iam_CallModal.val(Val_ButtonModal);
+        Iam_CallModal.addClass('active activeColor');
+        Iam_CallModal.closest('.JS_Section-El').find('.JS_Button-CallModal:last').addClass('active activeColor');
+        return
+    };
+})
+//====================КОНЕЦ вызов экрана "выбор значения атрибута элемента" и обратная связь==========
