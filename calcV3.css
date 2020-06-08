@@ -30,7 +30,8 @@
 /*==============стили шаки модульного окна*/
 .mod-header{
     margin: 5px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 0;
     background-color: #f3f4f8;
     border-radius: 5px;
     border-top: 2px solid #ddd;
@@ -39,8 +40,8 @@
     border-right: 2px solid #aaa;
 }
 .header-box{width:100%;}
-
-.mod-header .table {margin-top: 10px;}
+.header-name, .header-value{margin-top:1px ;}
+.mod-header .table {margin-top: 10px; margin-bottom: 0;}
 /*КОНЕЦ стили шаки модульного окна*/
 /*======================стили основной части модульного окна*/
 .mod-body{padding: 0;}
@@ -93,7 +94,7 @@
 }
 /*КОНЕЦ стили заклдок в модальном окне*/
 /*==============================стили кнопок*/
-.JS_Galka{width: 45px;}
+.buttonGalka{width: 45px;}
 
 .buttonFlat{
 	text-decoration: none !important;
@@ -111,7 +112,7 @@
 }
 
 /*КОНЕЦ стили кнопок*/
-
-/*td{border:1px solid black;}*/
+/*.table {border:1px solid black;  }
+td{border:1px solid black;}*/
 
 /*стили всплывающего окна*/
