@@ -19,11 +19,12 @@ $(document).ready(function(){
     let Iam;
     let Index;
     let Title_Modal;
-    let IamClosest;
+    let section;
     $('.tabCalc-link').click(function(){
         Iam=$(this);
         Index=Iam.closest('.tabCalc-links').find('.tabCalc-link').index(Iam);
         Title_Modal=Iam.val();
+alert(Title_Modal)
         AddRemove_Active();
         ResetModal();
         ShowHide_tabel ();
@@ -48,13 +49,13 @@ $(document).ready(function(){
     };
 
     function ResetModal() {
-        IamClosest=Iam.closest('.JS_Section-modal');
-        IamClosest.find('.JS_Button').removeClass('active activeColor');
-        IamClosest.find('.JS_Name').val('элемент');
-        IamClosest.find('.JS_Level').val('B');
-        IamClosest.find('.JS_Rotation').val('1');
-        IamClosest.find('.headeroutput-name').val('');
-        IamClosest.find('.headeroutput-value, .lineoutput-scores').val('0.00');
+        section=Iam.closest('.JS_Section-modal');
+        section.find('.JS_Button').removeClass('active activeColor');
+        section.find('.JS_Name').val('элемент');
+        section.find('.JS_Level').val('B');
+        section.find('.JS_Rotation').val('1');
+        section.find('.headeroutput-name').val('');
+        section.find('.headeroutput-scores, .lineoutput-scores').val('0.00');
         return;
     }
     function Print_Title_Modal(){
@@ -94,11 +95,7 @@ $(document).ready(function() {
     $('.JS_RemoveJump').click(function() {
         section=$(this).closest('.JS_Section-Table').find('.JS_Section-El.active:last');
         section.removeClass('active').addClass('hide');
-        section.find('.JS_Button').removeClass('active activeColor');
-        section.find('.JS_Name').val('элемент');
-        section.find('.JS_Level').val('B');
-        section.find('.JS_Rotation').val('1');
-        section.find('.lineoutput-scores').text('0.00');
+        ResetButtons(section);
     })
 })
 //=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
@@ -158,6 +155,7 @@ $(document).ready(function() {
 
     //=====================работа кнопок на экране для выбора значения атрибута элемента====
 $(document).ready(function(){
+    let Iam;
     $('#ElementModal .JS_ButtonModal').click(function() {
         Iam=$(this);
         Iam.closest('.JS_Section').find('.JS_ButtonModal').each(function(index){
@@ -173,16 +171,31 @@ $(document).ready(function(){
 //======================блокировка/разблокировка кнопок======================
 $(document).ready(function() {
     let section;
+    let Iam;
     $('.JS_Name').click(function() {
         section=$(this).closest('.JS_Section-El');
         $('.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"]').click(function() {
             section.find('.JS_Edge').prop('disabled', false);
         })
-        $('.JS_ButtonModal[value!="F"], #jumps .JS_ButtonModal[value!="Lz"]').click(function() {
-            section.find('.JS_Edge').prop('disabled',true);
+       $('.JS_ButtonModal:not(.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"])').click(function() {
+            Iam=section.find('.JS_Edge');
+            Iam.prop('disabled', true);
+            RmvClActv(Iam);
         })
     })
 
 })
 
 //======================КОНЕЦ блокировка/разблокировка кнопок======================
+function RmvClActv(Iam) {
+    Iam.removeClass('active activeColor');
+    return ;
+}
+function ResetButtons(section) {
+    section.find('.JS_Button').removeClass('active activeColor');
+    section.find('.JS_Name').val('элемент');
+    section.find('.JS_Level').val('B');
+    section.find('.JS_Rotation').val('1');
+    section.find('.lineoutput-scores').text('0.00');
+    section.find('.JS_Edge').prop('disabled', true);
+}
