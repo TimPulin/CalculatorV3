@@ -204,7 +204,7 @@ function DirectorSectionJumps(section, button) {
 
     function CheckAmountLinesHide(section) {
 let amount;
-amount=$(section).find('.JS_Section-El').length;
+amount=$(section).find('.JS_Section-El.hide').length;
 console.log(section);
 console.log(amount)
         if ($(section).find('.JS_Section-El.hide').length == 0){return false;}
