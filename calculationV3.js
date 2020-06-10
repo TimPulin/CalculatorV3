@@ -51,6 +51,7 @@ $(document).ready(function() {
         GetLineName();
         GetLineScores();
         PrintLineScores();
+        
         return;
     }
 
@@ -66,9 +67,9 @@ $(document).ready(function() {
         if (linescores==undefined){
             linescores=0;
             linename='';
-            return;
+            return false;
         }
-        return;
+        return true;
     }
     function PrintLineScores() {
         IamLine.find('.lineoutput-scores').text(linescores.toFixed(2));
