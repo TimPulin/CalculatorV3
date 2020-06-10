@@ -147,48 +147,77 @@ $(document).ready(function(){
 })
 //=====================КОНЕЦ работа кнопок на экране для выбора значения атрибута элемента====
 
-//======================блокировка/разблокировка кнопок======================
+//========================добавление/удаление прыжка в модальном окне==================
+    //ДОЛЖНО БЫТЬ ВЫШЕ @разблокировка кнопок "добавить прыжок"@
+$(document).ready(function() {
+    let section;
+
+      $('.JS_AddJump').click(function() {
+          $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
+      })
+      $('.JS_RemoveJump').click(function() {
+          section=$(this).closest('.JS_Section-Table').find('.JS_Section-El.active:last')
+          ResetButtons(section);
+          section.removeClass('active').addClass('hide');;
+      })
+})
+//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
+
+//======================Блокировка/Разблокировка кнопок==================================================
+$(document).ready(function () {
+    let amount;
+
+
+//==блокировка/разблокировка кнопки "E"
 $(document).ready(function() {
     let section;
     let button;
-    let Iam;
-    let amount;
     $('.JS_Name').click(function() {
         section=$(this).closest('.JS_Section-El');
     })
-//==блокировка/разблокировка кнопки "E"
     $('.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"]').click(function() {
         button=section.find('.JS_Edge');
         RemoveDisabled(button);
-        CreateName();
-        DirectorSectionJumps(section, button);
     })
     $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
         button=section.find('.JS_Edge');
         SetDisabled(button);
         RemoveClassActive(button);
-        CreateName();
-        DirectorSectionJumps(section, button); //разблокировка "добавить прыжок"
     })
-
-    function CreateName() {
-        section=button.closest('.JS_Section-Table');
-        button=section.find('.JS_AddJump');
-        return ;
-    }
+})
 //==КОНЕЦ блокировка/разблокировка кнопки "E"
 
+//===блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
+$(document).ready(function() {
+    let button;
 
+    $('#jumps .JS_ButtonModal, #ElementModal .JS_RemoveJump').click(function () {
+        button=$('.JS_AddJump');
+        CheckAmountLinesHide();
+        if(amount != 0){
+            RemoveDisabled(button);
+        }
+    })
+
+    $('.JS_RemoveJump').click(function () {
+        button=$(this);
+        CheckAmountLinesHide();
+        if(amount == 2){
+            SetDisabled(button);
+        }
+    })
+
+    $('.JS_AddJump').click(function () {
+        button=$(this);
+        SetDisabled(button);
+        button=$('.JS_RemoveJump');
+        RemoveDisabled(button);
+    })
 
 })
-function DirectorSectionJumps(section, button) {
-    CheckAmountLinesHide(section);
-    /*if(CheckAmountLinesHide()){alert("norm")}
-    else {
-        alert("bad")
-    }*/
-    RemoveDisabled(button);
-}
+//===КОНЕЦ блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
+
+
 
 
     //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
@@ -202,33 +231,16 @@ function DirectorSectionJumps(section, button) {
         return ;
     }
 
-    function CheckAmountLinesHide(section) {
-let amount;
-amount=$(section).find('.JS_Section-El.hide').length;
-console.log(section);
-console.log(amount)
-        if ($(section).find('.JS_Section-El.hide').length == 0){return false;}
-        return true;
+    function CheckAmountLinesHide() {
+        amount=$('#ElementModal .JS_Section-El.hide').length;
+        return;
     }
     //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
 
-//======================КОНЕЦ блокировка/разблокировка кнопок======================
-/*amount=$(this).closest('.JS_Section-Table').find('.JS_Section-El.hide').length;
-section=$(this).closest('.JS_Section-Table');*/
-//=========================добавление/удаление прыжка в модальном окне==================
-$(document).ready(function() {
-    let section;
-    $('.JS_AddJump').click(function() {
-          $(this).prop('disabled', true)
-          $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
-      })
-      $('.JS_RemoveJump').click(function() {
-          section=$(this).closest('.JS_Section-Table');
-          section.find('.JS_Section-El.active:last').removeClass('active').addClass('hide');
-          ResetButtons(section);
-      })
+
 })
-//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
+//======================КОНЕЦ Блокировка/Разблокировка кнопок===================================
+
 
 
 
@@ -242,8 +254,10 @@ function RemoveClassActive(button) {
 function ResetModal(Iam) {
     section=Iam.closest('.JS_Section-modal');
     ResetButtons(section);
+    $('.JS_Section-El.active').addClass('hide');
     section.find('.headeroutput-name').val('');
     section.find('.headeroutput-scores').val('0.00');
+    $('#ElementModal .JS_RemoveJump, #ElementModal .JS_AddJump').prop('disabled', true);
     return;
 }
 function ResetButtons(section) {
@@ -253,5 +267,6 @@ function ResetButtons(section) {
     section.find('.JS_Rotation').val('1');
     section.find('.lineoutput-scores').text('0.00');
     section.find('.JS_Edge').prop('disabled', true);
+
 }
 //======================КОНЕЦ служебные функции======================
