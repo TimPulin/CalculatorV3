@@ -24,9 +24,8 @@ $(document).ready(function(){
         Iam=$(this);
         Index=Iam.closest('.tabCalc-links').find('.tabCalc-link').index(Iam);
         Title_Modal=Iam.val();
-alert(Title_Modal)
         AddRemove_Active();
-        ResetModal();
+        ResetModal(Iam);
         ShowHide_tabel ();
         ShowHeader(Iam);
         Print_Title_Modal();
@@ -48,35 +47,27 @@ alert(Title_Modal)
         });
     };
 
-    function ResetModal() {
-        section=Iam.closest('.JS_Section-modal');
-        section.find('.JS_Button').removeClass('active activeColor');
-        section.find('.JS_Name').val('элемент');
-        section.find('.JS_Level').val('B');
-        section.find('.JS_Rotation').val('1');
-        section.find('.headeroutput-name').val('');
-        section.find('.headeroutput-scores, .lineoutput-scores').val('0.00');
-        return;
-    }
+
     function Print_Title_Modal(){
-        Iam.closest('.JS_Section-modal').find('.headeroutput').text(Title_Modal);
+        Iam.closest('.JS_Section-modal').find('.headeroutput-title').text(Title_Modal);
     };
 
 });
 //========================КОНЕЦ Переключение вкладок в модальном окне==
+
+//=======================закрытие экранов "выбор значения атрибута элемента" и открытие заголовка модульного окна=======
 $(document).ready(function () {
     let Iam;
     $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Galka, .JS_Edge').click(function(){
         Iam=$(this);
+        Hide_HeadersSections(Iam);
         ShowHeader(Iam);
     })
 })
 
-
-//=======================закрытие экранов "выбор значения атрибута элемента" и открытие заголовка модульного окна=======
 function ShowHeader(Iam) {
-    Hide_HeadersSections(Iam);
     $('#header_title').removeClass('hide');
+    return ;
 }
 function Hide_HeadersSections(Iam) {
     Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').each(function(index) {
@@ -86,19 +77,7 @@ function Hide_HeadersSections(Iam) {
 }
 //=======================КОНЕЦ закрытие экранов "выбор значения атрибута элемента"=======
 
-//=========================добавление/удаление прыжка в модальном окне==================
-$(document).ready(function() {
-    let section;
-   $('.JS_AddJump').click(function() {
-        $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
-   })
-    $('.JS_RemoveJump').click(function() {
-        section=$(this).closest('.JS_Section-Table').find('.JS_Section-El.active:last');
-        section.removeClass('active').addClass('hide');
-        ResetButtons(section);
-    })
-})
-//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
+
 
 //===============================активация кнопок при выборе значения атрибута==========
 $(document).ready(function() {
@@ -171,25 +150,72 @@ $(document).ready(function(){
 //======================блокировка/разблокировка кнопок======================
 $(document).ready(function() {
     let section;
+    let Table;
     let Iam;
+    let amount;
     $('.JS_Name').click(function() {
         section=$(this).closest('.JS_Section-El');
-        $('.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"]').click(function() {
-            section.find('.JS_Edge').prop('disabled', false);
-        })
-       $('.JS_ButtonModal:not(.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"])').click(function() {
-            Iam=section.find('.JS_Edge');
-            Iam.prop('disabled', true);
-            RmvClActv(Iam);
-        })
+    })
+//==разблокировка кнопки "E"
+    $('.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"]').click(function() {
+        section.find('.JS_Edge').prop('disabled', false);
+    })
+    $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
+        Iam=section.find('.JS_Edge');
+        Iam.prop('disabled', true);
+        RemoveClassActive(Iam);
+    })
+//==КОНЕЦ разблокировка кнопки "E"
+    $('#jumps .JS_ButtonModal').click(function() {
+
+        Table=$(this).closest('.JS_Section-Table');
+        CheckAmountLinesHide(Table);
+
+if(CheckAmountLinesHide()){alert("norm")}
+
+        section.closest('.JS_Section-Table').find('.JS_AddJump').prop('disabled', false)
     })
 
-})
 
+})
+function CheckAmountLinesHide(Table) {
+
+    if (    $(Table).find('.JS_Section-El.hide').length!=0){return true;}
+    return false;
+}
 //======================КОНЕЦ блокировка/разблокировка кнопок======================
-function RmvClActv(Iam) {
+/*amount=$(this).closest('.JS_Section-Table').find('.JS_Section-El.hide').length;
+section=$(this).closest('.JS_Section-Table');*/
+//=========================добавление/удаление прыжка в модальном окне==================
+$(document).ready(function() {
+    let section;
+    $('.JS_AddJump').click(function() {
+          $(this).prop('disabled', true)
+          $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
+      })
+      $('.JS_RemoveJump').click(function() {
+          section=$(this).closest('.JS_Section-Table');
+          section.find('.JS_Section-El.active:last').removeClass('active').addClass('hide');
+          ResetButtons(section);
+      })
+})
+//=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
+
+
+
+
+
+//======================служебные функции======================
+function RemoveClassActive(Iam) {
     Iam.removeClass('active activeColor');
     return ;
+}
+function ResetModal(Iam) {
+    section=Iam.closest('.JS_Section-modal');
+    ResetButtons(section);
+    section.find('.headeroutput-name').val('');
+    section.find('.headeroutput-scores').val('0.00');
+    return;
 }
 function ResetButtons(section) {
     section.find('.JS_Button').removeClass('active activeColor');
@@ -199,3 +225,4 @@ function ResetButtons(section) {
     section.find('.lineoutput-scores').text('0.00');
     section.find('.JS_Edge').prop('disabled', true);
 }
+//======================КОНЕЦ служебные функции======================
