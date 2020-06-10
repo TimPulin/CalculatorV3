@@ -150,39 +150,70 @@ $(document).ready(function(){
 //======================блокировка/разблокировка кнопок======================
 $(document).ready(function() {
     let section;
-    let Table;
+    let button;
     let Iam;
     let amount;
     $('.JS_Name').click(function() {
         section=$(this).closest('.JS_Section-El');
     })
-//==разблокировка кнопки "E"
+//==блокировка/разблокировка кнопки "E"
     $('.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"]').click(function() {
-        section.find('.JS_Edge').prop('disabled', false);
+        button=section.find('.JS_Edge');
+        RemoveDisabled(button);
+        CreateName();
+        DirectorSectionJumps(section, button);
     })
     $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
-        Iam=section.find('.JS_Edge');
-        Iam.prop('disabled', true);
-        RemoveClassActive(Iam);
+        button=section.find('.JS_Edge');
+        SetDisabled(button);
+        RemoveClassActive(button);
+        CreateName();
+        DirectorSectionJumps(section, button); //разблокировка "добавить прыжок"
     })
-//==КОНЕЦ разблокировка кнопки "E"
-    $('#jumps .JS_ButtonModal').click(function() {
 
-        Table=$(this).closest('.JS_Section-Table');
-        CheckAmountLinesHide(Table);
+    function CreateName() {
+        section=button.closest('.JS_Section-Table');
+        button=section.find('.JS_AddJump');
+        return ;
+    }
+//==КОНЕЦ блокировка/разблокировка кнопки "E"
 
-if(CheckAmountLinesHide()){alert("norm")}
-
-        section.closest('.JS_Section-Table').find('.JS_AddJump').prop('disabled', false)
-    })
 
 
 })
-function CheckAmountLinesHide(Table) {
-
-    if (    $(Table).find('.JS_Section-El.hide').length!=0){return true;}
-    return false;
+function DirectorSectionJumps(section, button) {
+    CheckAmountLinesHide(section);
+    /*if(CheckAmountLinesHide()){alert("norm")}
+    else {
+        alert("bad")
+    }*/
+    RemoveDisabled(button);
 }
+
+
+    //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
+    function RemoveDisabled(button) {
+        button.prop('disabled', false);
+        return ;
+    }
+
+    function SetDisabled(button) {
+        button.prop('disabled', true);
+        return ;
+    }
+
+    function CheckAmountLinesHide(section) {
+let amount;
+let iam;
+iam=$(section).find('.JS_Section-El');
+amount=iam.length;
+console.log(iam);
+console.log(amount)
+        if ($(section).find('.JS_Section-El.hide').length == 0){return false;}
+        return true;
+    }
+    //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
+
 //======================КОНЕЦ блокировка/разблокировка кнопок======================
 /*amount=$(this).closest('.JS_Section-Table').find('.JS_Section-El.hide').length;
 section=$(this).closest('.JS_Section-Table');*/
@@ -206,8 +237,8 @@ $(document).ready(function() {
 
 
 //======================служебные функции======================
-function RemoveClassActive(Iam) {
-    Iam.removeClass('active activeColor');
+function RemoveClassActive(button) {
+    button.removeClass('active activeColor');
     return ;
 }
 function ResetModal(Iam) {
