@@ -158,84 +158,76 @@ $(document).ready(function() {
       $('.JS_RemoveJump').click(function() {
           section=$(this).closest('.JS_Section-Table').find('.JS_Section-El.active:last')
           ResetButtons(section);
-          section.removeClass('active').addClass('hide');;
+          section.removeClass('active').addClass('hide');
       })
 })
 //=========================КОНЕЦ добавление/удаление прыжка в модальном окне==================
 
+
+
 //======================Блокировка/Разблокировка кнопок==================================================
 $(document).ready(function () {
-    let amount;
 
-
-//==блокировка/разблокировка кнопки "E"
-$(document).ready(function() {
-    let section;
-    let button;
-    $('.JS_Name').click(function() {
-        section=$(this).closest('.JS_Section-El');
+    //==блокировка/разблокировка кнопки "E"
+    $(document).ready(function() {
+        let section;
+        let button;
+        $('.JS_Name').click(function() {
+            section=$(this).closest('.JS_Section-El');
+        })
+        $('.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"]').click(function() {
+            section.find('.JS_Edge').prop('disabled', false);
+        })
+        $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
+            button=section.find('.JS_Edge');
+            button.removeClass('active activeColor');
+            button.prop('disabled', true);
+        })
     })
-    $('.JS_ButtonModal[value="F"], .JS_ButtonModal[value="Lz"]').click(function() {
-        button=section.find('.JS_Edge');
-        RemoveDisabled(button);
-    })
-    $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
-        button=section.find('.JS_Edge');
-        SetDisabled(button);
-        RemoveClassActive(button);
-    })
-})
-//==КОНЕЦ блокировка/разблокировка кнопки "E"
+    //==КОНЕЦ блокировка/разблокировка кнопки "E"
 
-//===блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
-$(document).ready(function() {
-    let button;
+    //===блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
+    $(document).ready(function() {
+        let amount;
 
-    $('#jumps .JS_ButtonModal, #ElementModal .JS_RemoveJump').click(function () {
-        button=$('.JS_AddJump');
-        CheckAmountLinesHide();
-        if(amount != 0){
-            RemoveDisabled(button);
+        $('#jumps .JS_ButtonModal, #ElementModal .JS_RemoveJump').click(function () {
+            CheckAmountLinesHide();
+            if(amount != 0){
+                $('#ElementModal .JS_AddJump').prop('disabled', false);
+            }
+        })
+
+        $('.JS_RemoveJump').click(function () {
+            CheckAmountLinesHide();
+            if(amount == 2){
+                $(this).prop('disabled', true);
+            }
+        })
+
+        $('.JS_AddJump').click(function () {
+            $(this).prop('disabled', true);
+            $('#ElementModal .JS_RemoveJump').prop('disabled', false);;
+        })
+
+        function CheckAmountLinesHide() {
+            amount=$('#ElementModal .JS_Section-El.hide').length;
+            return;
         }
+
+    })
+    //===КОНЕЦ блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
+
+    //====================блокировка/разблокировка кнопок "A" и "Eu"===========
+    $(document).ready(function() {
+
     })
 
-    $('.JS_RemoveJump').click(function () {
-        button=$(this);
-        CheckAmountLinesHide();
-        if(amount == 2){
-            SetDisabled(button);
-        }
-    })
-
-    $('.JS_AddJump').click(function () {
-        button=$(this);
-        SetDisabled(button);
-        button=$('.JS_RemoveJump');
-        RemoveDisabled(button);
-    })
-
-})
-//===КОНЕЦ блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
+    //====================КОНЕЦ блокировка/разблокировка кнопок "A" и "Eu"===========
 
 
+   //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
 
-
-    //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
-    function RemoveDisabled(button) {
-        button.prop('disabled', false);
-        return ;
-    }
-
-    function SetDisabled(button) {
-        button.prop('disabled', true);
-        return ;
-    }
-
-    function CheckAmountLinesHide() {
-        amount=$('#ElementModal .JS_Section-El.hide').length;
-        return;
-    }
-    //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
+   //==========КОНЕЦ служебные функции блокировки/разблокировки кнопок секциип прыжки=====
 
 
 })
@@ -247,10 +239,6 @@ $(document).ready(function() {
 
 
 //======================служебные функции======================
-function RemoveClassActive(button) {
-    button.removeClass('active activeColor');
-    return ;
-}
 function ResetModal(Iam) {
     section=Iam.closest('.JS_Section-modal');
     ResetButtons(section);
