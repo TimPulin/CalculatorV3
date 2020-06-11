@@ -2,10 +2,10 @@
 
 //====================вычисления в модульном окне==========
 $(document).ready(function() {
-    let Iam;
-    let IamLine;
-    let linename;
-    let linescores;
+    let Iam,
+        line,
+        linename,
+        linescores;
 
     $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
         Iam=$(this);
@@ -13,8 +13,14 @@ $(document).ready(function() {
 
 //=============================перенос информации с экрана для выбора значения атрибута элемента
     $(document).ready(function () {
-        let IamModal;
-        let Val_IamModal;
+        let IamModal,
+            Val_IamModal;
+
+        BUTTON_EU.click(function(){
+            BUTTON_ROTATION.val(1);
+            DirectorModal();
+        })
+
         $('.JS_ButtonModal').click(function() {
             IamModal=$(this);
             Val_IamModal=IamModal.val();
@@ -47,17 +53,17 @@ $(document).ready(function() {
 
     //================все функции DirectorLine=====================
     function DirectorLine() {
-        IamLine=Iam.closest('.JS_Section-El');
+        line=Iam.closest('.JS_Section-El');
         GetLineName();
         GetLineScores();
         PrintLineScores();
-        
+
         return;
     }
 
     function GetLineName() {
         linename=''
-        IamLine.find('.JS_Button.active').each(function (index) {
+        line.find('.JS_Button.active').each(function (index) {
             linename=linename+$(this).val();
         })
         return;
@@ -72,7 +78,7 @@ $(document).ready(function() {
         return true;
     }
     function PrintLineScores() {
-        IamLine.find('.lineoutput-scores').text(linescores.toFixed(2));
+        line.find('.lineoutput-scores').text(linescores.toFixed(2));
         return;
     }
 //================КОНЕЦ все функции DirectorLine=====================
