@@ -16,12 +16,7 @@ $(document).ready(function() {
         let IamModal,
             Val_IamModal;
 
-        BUTTON_EU.click(function(){
-            BUTTON_ROTATION.val(1);
-            DirectorModal();
-        })
-
-        $('.JS_ButtonModal').click(function() {
+       $('.JS_ButtonModal').click(function() {
             IamModal=$(this);
             Val_IamModal=IamModal.val();
             AddInLine_ValButtonModal();
@@ -36,13 +31,27 @@ $(document).ready(function() {
         function CheckClass() {
             if(Iam.hasClass('JS_Name')){
                 Iam.closest('.JS_Section-El').find('.JS_Level, .JS_Rotation').addClass('active activeColor');
+                if (Val_IamModal=='Eu'){
+                    BUTTON_ROTATION.val(1);
+                }
+                else if(Val_IamModal=='ChSq'){
+                    BUTTON_STEPLEVEL.val(1);
+                }
             }
+
             return;
         }
     })
 //=============================КОНЕЦ перенос информации с экрана для выбора значения атрибута элемента
+    $('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
+        Iam=$(this);
+        if(!$('#ElementModal .JS_Fly').hasClass('active') && !$('#ElementModal .JS_ChangeLeg').hasClass('active')){
+            $('#ElementModal .JS_V').removeClass('active activeColor');
+        }
+        DirectorModal();
+    })
 
-    $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Galka, .JS_Edge').click(function() {
+    $('#ElementModal .JS_V, #ElementModal .JS_Galka, #ElementModal .JS_Edge').click(function() {
         Iam=$(this);
         DirectorModal();
     })
