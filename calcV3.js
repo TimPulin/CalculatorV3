@@ -46,12 +46,6 @@ $(document).ready(function(){
     function ShowHide_tabel(){
         Iam.closest('.tabCalc-wrap').find('.tabCalc-content').addClass('hide');
         Iam.closest('.tabCalc-wrap').find('.tabCalc-content').eq(Index).removeClass('hide');
-       /* Iam.closest('.tabCalc-wrap').find('.tabCalc-content').each(function(index){//если все работает - удалить
-            if (index==Index){
-                $(this).removeClass('hide');
-            }
-           else {$(this).addClass('hide');}
-        })*/
     };
 
 
@@ -93,7 +87,6 @@ $(document).ready(function() {
         })
     })
 })
-//===============================КОНЕЦ поведение кнопок при выборе значения атрибута==========
 
 $(document).ready(function() {
     $('.JS_Level, .JS_Rotation').click(function() {
@@ -101,6 +94,9 @@ $(document).ready(function() {
 
     })
 })
+//===============================КОНЕЦ поведение кнопок при выборе значения атрибута==========
+
+
 
 
 
@@ -114,11 +110,18 @@ $(document).ready(function() {
         Iam=$(this);
         Val_Iam=$(this).val();
         ID='#'+Iam.attr('name');
-        Hide_HeadersSections(Iam)
-        $(ID).removeClass('hide');
-        addClassActiveTo_JS_ButtonModal();
+        Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').not($(ID)).addClass('hide');
+        $(ID).toggleClass('hide');
+        CheckClass();
     })
 
+    function CheckClass() {
+        if($(ID).hasClass('hide')){
+            ShowHeader();
+        } else {
+            addClassActiveTo_JS_ButtonModal();
+        }
+    }
     function addClassActiveTo_JS_ButtonModal(){
         $(ID).find(".JS_ButtonModal").each(function(index){
             jQuery(this).removeClass('active activeColor');
@@ -225,27 +228,37 @@ $(document).ready(function () {
         })
         //===КОНЕЦ блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
 
-        //====================блокировка/разблокировка кнопок "A" и "Eu"===========
+        //====================блокировка/разблокировка кнопок   в секции "прыжки"===========
        $(document).ready(function() {
             let IndexS,
                 IndexT,
                 mySection,
                 myTable;
+            const NAMESECONDLINE=$('.JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Name');
 
 
 
-            $('#ElementModal .JS_Name').click(function() {   //включение/отключение кнопок Eu, "добавить прыжок" JS_Rotation, JS_Level
+            $('#ElementModal .JS_Name').click(function() {   //включение/отключение кнопок Eu, "добавить прыжок", JS_Level
                 myTable=$(this).closest('.JS_Section-Table');
                 IndexT=$(this).closest('.JS_Section-tables').find('.JS_Section-Table').index(myTable);
                 if(IndexT==2){
                         mySection=$(this).closest('.JS_Section-El');
                         IndexS=$(this).closest('.JS_Section-Table').find('.JS_Section-El').index(mySection);
+                        //разблокировка Eu во второай линии
                         if(IndexS==1){
                             BUTTON_EU.prop('disabled', false);
-                        }else {
+                        //блокировка всех прыжков кроме S и F если Eu во второй линии
+                        } else if (IndexS==2 && NAMESECONDLINE.val()=='Eu'){
+                            $('#jumps .JS_ButtonModal').not('.JS_ButtonModal[value="S"], .JS_ButtonModal[value="F"]').prop('disabled', true);
+                        //разблокировка прыжков в других линиях
+                        } else if(IndexS!=1 && NAMESECONDLINE.val()=='Eu') {
+                            $('#jumps .JS_ButtonModal').not('.JS_ButtonModal[value="Eu"]').prop('disabled', false);
+                        //блокировка Eu в первой и третьей линии
+                        } else {
                             BUTTON_EU.prop('disabled', true);
                         }
                }
+                //блокировка/разблокировка кнопки "JS_Rotation"
                BUTTON_EU.click(function() {
                    BUTTON_ROTATION.prop('disabled', true);
                })
@@ -259,7 +272,9 @@ $(document).ready(function () {
                         BUTTON_ROTATION.prop('disabled', false);
                    }
                })
+                //блокировка/разблокировка кнопки "JS_Rotation"
 
+                //блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
                BUTTON_A.click(function() {
                    if(IndexS==1){
                        $('#ElementModal .JS_AddJump').prop('disabled', true);
@@ -267,20 +282,39 @@ $(document).ready(function () {
                        $('#ElementModal .JS_AddJump').prop('disabled', false);
                   }
                })
+                //КОНЕЦ блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
 
+
+               //блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
                BUTTON_CHSQ.click(function() {
-                   BUTTON_LEVEL.prop('disabled', true);
+                   BUTTON_STEPLEVEL.prop('disabled', true);
                })
+               $('#steps .JS_ButtonModal[value="StSq"]').click(function() {
+                    BUTTON_STEPLEVEL.prop('disabled', false);
+               })
+               //КОНЕЦ блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
 
-            })  //КОНЕЦ включение/отключение кнопок Eu, "добавить прыжок" JS_Rotation, JS_Level
+            })
+            //КОНЕЦ включение/отключение кнопок Eu, "добавить прыжок" JS_Rotation, JS_Level
+
+            //блокировка кнопки "V"
+            $('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
+                if($('#ElementModal  .JS_Fly').hasClass('active') || $('#ElementModal .JS_ChangeLeg').hasClass('active')){
+                    $('#ElementModal .JS_V').prop('disabled', false);
+                } else {
+                     $('#ElementModal .JS_V').prop('disabled', true);
+                }
+            })
+            //КОНЕЦ блокировка кнопки "V"
         })
+        //====================КОНЕЦ блокировка/разблокировка кнопок в секции "прыжки"===========
     })
-    //====================КОНЕЦ блокировка/разблокировка кнопок "A" и "Eu"===========
 
 
-   //==========служебные функции блокировки/разблокировки кнопок секциип прыжки=====
 
-   //==========КОНЕЦ служебные функции блокировки/разблокировки кнопок секциип прыжки=====
+
+
+
 
 
 })
@@ -296,12 +330,14 @@ const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
       BUTTON_A=$('#jumps .JS_ButtonModal[value="A"]'),
       BUTTON_ROTATION=$('#ElementModal .JS_Section-tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
       BUTTON_CHSQ=$('#steps .JS_ButtonModal[value="ChSq"]'),
-      BUTTON_LEVEL=$('#ElementModal .JS_Section-tables .JS_Section-Table:eq(0) .JS_Level');
+      BUTTON_STEPLEVEL=$('#ElementModal .JS_Section-tables .JS_Section-Table:eq(0) .JS_Level');
 
 
 function ResetModal(Iam) {
     section=Iam.closest('.JS_Section-modal');
     ResetButtons(section);
+    Hide_HeadersSections(Iam);
+    ShowHeader();
     $('.JS_Section-El.active').addClass('hide');
     section.find('.headeroutput-name').val('');
     section.find('.headeroutput-scores').val('0.00');
@@ -314,7 +350,8 @@ function ResetButtons(section) {
     section.find('.JS_Level').val('B');
     section.find('.JS_Rotation').val('1');
     BUTTON_ROTATION.prop('disabled', false);
-    BUTTON_LEVEL.prop('disabled', false);
+    BUTTON_STEPLEVEL.prop('disabled', false);
+     $('#ElementModal .JS_V').prop('disabled', true);
     section.find('.lineoutput-scores').text('0.00');
     section.find('.JS_Edge').prop('disabled', true);
 
