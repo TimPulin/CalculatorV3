@@ -154,13 +154,13 @@ $(document).ready(function() {
     let section,
         Iam;
 
-      $('.JS_AddJump').click(function() {
+      $('#ElementModal .JS_AddJump').click(function() {
           Iam=$(this);
           $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
           Hide_HeadersSections(Iam);
           ShowHeader();
       })
-      $('.JS_RemoveJump').click(function() {
+      $('#ElementModal .JS_RemoveJump').click(function() {
           Iam=$(this);
           section=Iam.closest('.JS_Section-Table').find('.JS_Section-El.active:last')
           ResetButtons(section);
@@ -195,13 +195,24 @@ $(document).ready(function () {
     //==КОНЕЦ блокировка/разблокировка кнопки "E"
 
     $(document).ready(function(){
-        let amount; //переменная используется для кнопок "добавить/удалить прыжок" и кнопки "Eu"
+        let amount, //переменная используется для кнопок "добавить/удалить прыжок" и кнопки "Eu"
+            IndexS;
 
         //===блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
         $(document).ready(function() {
+            let Iam;
 
-
-            $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="A"]), #ElementModal .JS_RemoveJump').click(function () {
+            $('#ElementModal .JS_Name').click(function() {
+                Iam=$(this);
+            })
+            $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="A"])').click(function() {
+                CheckAmountLinesHide();
+                if(amount != 0){
+                    $('#ElementModal .JS_AddJump').prop('disabled', false);
+                }
+            })
+            $('#ElementModal .JS_RemoveJump').click(function () {
+                Iam=$(this);
                 CheckAmountLinesHide();
                 if(amount != 0){
                     $('#ElementModal .JS_AddJump').prop('disabled', false);
@@ -209,6 +220,7 @@ $(document).ready(function () {
             })
 
             $('.JS_RemoveJump').click(function () {
+                Iam=$(this);
                 CheckAmountLinesHide();
                 if(amount == 2){
                     $(this).prop('disabled', true);
@@ -216,12 +228,25 @@ $(document).ready(function () {
             })
 
             $('#ElementModal .JS_AddJump').click(function () {
-                $(this).prop('disabled', true);
+               $(this).prop('disabled', true);
                 $('#ElementModal .JS_RemoveJump').prop('disabled', false);;
             })
 
+             //блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
+             BUTTON_A.click(function() {
+                 if(IndexS==1){
+                     if(amount==0){
+                         $('#ElementModal .JS_RemoveJump').trigger('click');
+                     }
+                     $('#ElementModal .JS_AddJump').prop('disabled', true);
+                 }else {
+                     $('#ElementModal .JS_AddJump').prop('disabled', false);
+                }
+             })
+             //КОНЕЦ блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
+
             function CheckAmountLinesHide() {
-                amount=$('#ElementModal .JS_Section-Table:eq(2) .JS_Section-El.hide').length;
+                amount=$(Iam).closest('.JS_Section-Table').find('.JS_Section-El.hide').length;
                 return;
             }
 
@@ -230,72 +255,65 @@ $(document).ready(function () {
 
         //====================блокировка/разблокировка кнопок   в секции "прыжки"===========
        $(document).ready(function() {
-            let IndexS,
-                IndexT,
-                mySection,
-                myTable;
-            const NAMESECONDLINE=$('.JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Name');
+            let IndexT,
+                section,
+                table;
+            const NAMESECONDLINE=$('.JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Name'),
+                  BUTTONSJUMPS=$('#jumps .JS_ButtonModal');
 
 
-
-            $('#ElementModal .JS_Name').click(function() {   //включение/отключение кнопок Eu, "добавить прыжок", JS_Level
-                myTable=$(this).closest('.JS_Section-Table');
-                IndexT=$(this).closest('.JS_Section-tables').find('.JS_Section-Table').index(myTable);
+            //представление кнопок выбора атрибута прыжка в секции "прыжки"
+            $('#ElementModal .JS_Name').click(function() {
+                table=$(this).closest('.JS_Section-Table');
+                IndexT=$(this).closest('.JS_Section-tables').find('.JS_Section-Table').index(table);
                 if(IndexT==2){
-                        mySection=$(this).closest('.JS_Section-El');
-                        IndexS=$(this).closest('.JS_Section-Table').find('.JS_Section-El').index(mySection);
-                        //разблокировка Eu во второай линии
-                        if(IndexS==1){
-                            BUTTON_EU.prop('disabled', false);
-                        //блокировка всех прыжков кроме S и F если Eu во второй линии
-                        } else if (IndexS==2 && NAMESECONDLINE.val()=='Eu'){
-                            $('#jumps .JS_ButtonModal').not('.JS_ButtonModal[value="S"], .JS_ButtonModal[value="F"]').prop('disabled', true);
-                        //разблокировка прыжков в других линиях
-                        } else if(IndexS!=1 && NAMESECONDLINE.val()=='Eu') {
-                            $('#jumps .JS_ButtonModal').not('.JS_ButtonModal[value="Eu"]').prop('disabled', false);
-                        //блокировка Eu в первой и третьей линии
-                        } else {
-                            BUTTON_EU.prop('disabled', true);
+                    section=$(this).closest('.JS_Section-El');
+                    IndexS=$(this).closest('.JS_Section-Table').find('.JS_Section-El').index(section);
+                    //представление прыжков в первой линии
+                    if(IndexS==0){
+                        BUTTON_EU.prop('disabled', true);
+                        BUTTONSJUMPS.not(BUTTON_EU).prop('disabled', false);
+                    //представление прыжков во второй линии
+                    } else if (IndexS==1){
+                        BUTTONSJUMPS.not('.JS_ButtonModal[value="Lz"]').prop('disabled', false);
+                        $('#jumps .JS_ButtonModal[value="Lz"]').prop('disabled', true);
+                     //представление прыжков в третьей линии
+                    } else if(IndexS==2) {
+                        if(NAMESECONDLINE.val()=='Eu'){
+                            BUTTONSJUMPS.not('.JS_ButtonModal[value="S"], .JS_ButtonModal[value="F"]').prop('disabled', true);
+                        }else {
+                            $('.JS_ButtonModal[value="A"], .JS_ButtonModal[value="Eu"], .JS_ButtonModal[value="Lz"]').prop('disabled', true);
+                            BUTTONSJUMPS.not('.JS_ButtonModal[value="A"], .JS_ButtonModal[value="Eu"], .JS_ButtonModal[value="Lz"]').prop('disabled', false);
                         }
-               }
-                //блокировка/разблокировка кнопки "JS_Rotation"
-               BUTTON_EU.click(function() {
-                   BUTTON_ROTATION.prop('disabled', true);
-               })
-               $('.JS_RemoveJump').click(function() {
-                   if (amount==2){
-                       BUTTON_ROTATION.prop('disabled', false);
-                   }
-               })
-               $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="Eu"])').click(function() {
-                   if(IndexS==1){
-                        BUTTON_ROTATION.prop('disabled', false);
-                   }
-               })
-                //блокировка/разблокировка кнопки "JS_Rotation"
-
-                //блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
-               BUTTON_A.click(function() {
-                   if(IndexS==1){
-                       $('#ElementModal .JS_AddJump').prop('disabled', true);
-                   }else {
-                       $('#ElementModal .JS_AddJump').prop('disabled', false);
-                  }
-               })
-                //КОНЕЦ блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
-
-
-               //блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
-               BUTTON_CHSQ.click(function() {
-                   BUTTON_STEPLEVEL.prop('disabled', true);
-               })
-               $('#steps .JS_ButtonModal[value="StSq"]').click(function() {
-                    BUTTON_STEPLEVEL.prop('disabled', false);
-               })
-               //КОНЕЦ блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
-
+                    }
+                }
             })
-            //КОНЕЦ включение/отключение кнопок Eu, "добавить прыжок" JS_Rotation, JS_Level
+            //КОНЕЦ представление кнопок выбора атрибута прыжка в секции "прыжки"
+
+            //блокировка/разблокировка кнопки "JS_Rotation"
+            BUTTON_EU.click(function() {
+                BUTTON_ROTATION.prop('disabled', true);
+            })
+            $('.JS_RemoveJump').click(function() {
+                if (amount==2){
+                    BUTTON_ROTATION.prop('disabled', false);
+                }
+            })
+            $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="Eu"])').click(function() {
+                if(IndexS==1){
+                     BUTTON_ROTATION.prop('disabled', false);
+                }
+            })
+            //КОНЕЦ блокировка/разблокировка кнопки "JS_Rotation"
+
+            //блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
+            BUTTON_CHSQ.click(function() {
+                BUTTON_STEPLEVEL.prop('disabled', true);
+            })
+            $('#steps .JS_ButtonModal[value="StSq"]').click(function() {
+                 BUTTON_STEPLEVEL.prop('disabled', false);
+            })
+            //КОНЕЦ блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
 
             //блокировка кнопки "V"
             $('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
@@ -309,14 +327,6 @@ $(document).ready(function () {
         })
         //====================КОНЕЦ блокировка/разблокировка кнопок в секции "прыжки"===========
     })
-
-
-
-
-
-
-
-
 })
 //======================КОНЕЦ Блокировка/Разблокировка кнопок===================================
 
@@ -347,11 +357,9 @@ function ResetModal(Iam) {
 function ResetButtons(section) {
     section.find('.JS_Button').removeClass('active activeColor');
     section.find('.JS_Name').val('элемент');
-    section.find('.JS_Level').val('B');
-    section.find('.JS_Rotation').val('1');
-    BUTTON_ROTATION.prop('disabled', false);
-    BUTTON_STEPLEVEL.prop('disabled', false);
-     $('#ElementModal .JS_V').prop('disabled', true);
+    section.find('.JS_Level').val('B').prop('disabled', false);
+    section.find('.JS_Rotation').val('1').prop('disabled', false);
+    $('#ElementModal .JS_V').prop('disabled', true);
     section.find('.lineoutput-scores').text('0.00');
     section.find('.JS_Edge').prop('disabled', true);
 
