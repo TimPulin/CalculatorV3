@@ -2,16 +2,19 @@ $(document).ready(function() {
 
     let Iam,
         IamModal,
-        IndexT;
+        IndexT,
+        IamSectionTable;
 
     $('.JS_Section-Modal .JS_Save').click(function() {
         Iam=$(this);
         IamModal=$(this).closest('.JS_Section-Modal');
+        IamSectionTable=IamModal.find('.JS_Section-Tables .JS_Section-Table');
         DirectorCompilingConfig()
     })
 
     function DirectorCompilingConfig() {
         FindActiveTab();
+        GetSectionInfo();
         GetButtonsInfo();
 
     }
@@ -27,8 +30,17 @@ $(document).ready(function() {
         })
     }
 
+    function GetSectionInfo() {
+        IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
+            MakeTheName_Modal(index);
+            arrLinesClass[NameOfProperty]=$(this).attr('class');
+
+        })
+        return;
+    }
+
     function GetButtonsInfo() {
-        IamModal.find('.JS_Section-Tables .JS_Section-Table').eq(IndexT).find('.JS_Button').each(function(index) {
+        IamSectionTable.eq(IndexT).find('.JS_Button').each(function(index) {
             MakeTheName_Modal(index);
             if($(this).hasClass('activeColor')){
                 arrButtonsClass[NameOfProperty]='active activeColor'
