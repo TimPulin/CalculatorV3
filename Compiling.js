@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     function DirectorCompilingConfig() {
         FindActiveTab();
-
+        GetButtonsInfo();
 
     }
 
@@ -25,5 +25,8 @@ $(document).ready(function() {
         })
     }
 
+    function GetButtonsInfo() {
+        
+    }
 
 })
