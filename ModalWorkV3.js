@@ -6,10 +6,10 @@ $(document).ready(function() {
         $('#ElementModal').modal();
     });
     //закрытие модального окна
-    $('.JS_Button_SaveModal').click(function() {
+    $('#ElementModal .JS_Save').click(function() {
          HideModal();
     })
-    $('.JS_Button_ResetModal').click(function() {
+    $('#ElementModal .JS_Reset').click(function() {
         Iam=$(this);
         HideModal();
         ResetModal(Iam);
@@ -107,8 +107,9 @@ $(document).ready(function () {
 $(document).ready(function() {
     let Iam;
 
-    $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Edge').click(function() {
+    $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Edge, .JS_X').click(function() {
         $(this).toggleClass('active activeColor');
+
     })
 
     $('.JS_Galka').click(function() {
@@ -260,7 +261,7 @@ $(document).ready(function () {
             //представление кнопок выбора атрибута прыжка в секции "прыжки"
             $('#ElementModal .JS_Name').click(function() {
                 table=$(this).closest('.JS_Section-Table');
-                IndexT=$(this).closest('.JS_Section-tables').find('.JS_Section-Table').index(table);
+                IndexT=$(this).closest('.JS_Section-Tables').find('.JS_Section-Table').index(table);
                 if(IndexT==2){
                     section=$(this).closest('.JS_Section-El');
                     IndexS=$(this).closest('.JS_Section-Table').find('.JS_Section-El').index(section);
@@ -333,12 +334,13 @@ $(document).ready(function () {
 //======================служебные функции======================
 const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
       BUTTON_A=$('#jumps .JS_ButtonModal[value="A"]'),
-      BUTTON_ROTATION=$('#ElementModal .JS_Section-tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
+      BUTTON_ROTATION=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
       BUTTON_CHSQ=$('#steps .JS_ButtonModal[value="ChSq"]'),
-      BUTTON_STEPLEVEL=$('#ElementModal .JS_Section-tables .JS_Section-Table:eq(0) .JS_Level');
+      BUTTON_STEPLEVEL=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(0) .JS_Level');
 
 
 function ResetModal(Iam) {
+    let section;
     section=Iam.closest('.JS_Section-modal');
     ResetButtons(section);
     Hide_HeadersSections(Iam);
