@@ -17,7 +17,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content JS_Section-Modal bg-ccc rounded" ><!--modal content-->
 			<div class="mod-header">
-				<div class="JS_Section" id="header_title">
+				<div class="JS_Section active" id="header_title">
 					<div class="header-box text-center">
 						<output class="headeroutput-title">Прыжок</output>
 					</div>
@@ -31,7 +31,7 @@
 					</table>
 				</div><!--end section with title-->
 				<!--rotations-->
-				<div class="JS_Section hide" id="rotations">
+				<div class="JS_Section" id="rotations">
 					<div class="header-box text-center">
 						Обороты
 					</div>
@@ -45,7 +45,7 @@
 					</table>
 				</div><!--edn rotations-->
 				<!--jumps-->
-				<div class="JS_Section hide" id="jumps">
+				<div class="JS_Section" id="jumps">
 					<div class="header-box text-center">
 						Прыжки
 					</div>
@@ -62,7 +62,7 @@
 					</table>
 				</div><!--end jumps-->
 				<!--=======================levels========================-->
-				<div class="JS_Section hide" id="levels">
+				<div class="JS_Section" id="levels">
 					<div class="header-box text-center">
 						Уровни
 					</div>
@@ -77,7 +77,7 @@
 					</table>
 				</div><!--edn levels-->
 				<!--=======================spins========================-->
-				<div class="JS_Section hide" id="spins">
+				<div class="JS_Section" id="spins">
 					<div class="header-box text-center">
 						Вращения
 					</div>
@@ -108,18 +108,18 @@
 			<div class="mod-body JS_Section-Tables tabCalc-wrap">
 						<div class="wrap-tables">
 							<!--========================step========================-->
-
-								<table class="table JS_Section-Table tabCalc-content hide">
+							<div class="tabCalc-content">
+								<table class="table JS_Section-Table">
 									<tr class="JS_Section-El">
 										<td ><input type="button" class="JS_Button JS_Name  buttonFlat" name="steps" value="элемент"></td>
 										<td><input type="button" class="JS_Button JS_Level  buttonFlat" name="levels" value="B"></td>
 										<td ><output class="lineoutput-scores">0.00</output></td>
 									</tr>
 								</table><!--end table step-->
-
+							</div>
 							<!--============================spins=====================================-->
-
-								<table class="table JS_Section-Table tabCalc-content hide">
+							<div class="tabCalc-content">
+								<table class="table JS_Section-Table">
 									<tr class="JS_Section-El">
 										<td ><input type="button" class="JS_Button JS_Fly   buttonFlat" value="F"></td>
 										<td><input type="button" class="JS_Button JS_ChangeLeg   buttonFlat" value="C"></td>
@@ -129,10 +129,10 @@
 										<td ><output class="lineoutput-scores">0.00</output></td>
 									</tr>
 								</table><!--end table spin-->
-
+							</div>
 							<!--=====================================jump=======================-->
-
-								<table class="table JS_Section-Table tabCalc-content">
+							<div class="tabCalc-content active">
+								<table class="table JS_Section-Table">
 									<tr>
 										<td colspan="5">
 											<button class="JS_RemoveJump buttonFlat float-left" disabled>убрать прыжок</button>
@@ -174,6 +174,7 @@
 									</tr>
 
 								</table><!--end table jumps-->
+							</div>
 						</div><!-- end wrap-tables-->
 						<div class="tabCalc-links">
 							<button class="tabCalc-link" value="Дорожка">Дорожка</button>
