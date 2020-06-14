@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 
     function Print_Title_Modal(){
-        Iam.closest('.JS_Section-modal').find('.headeroutput-title').text(Title_Modal);
+        Iam.closest('.JS_Section-Modal').find('.headeroutput-title').text(Title_Modal);
     };
 
 });
@@ -69,7 +69,7 @@ $(document).ready(function() {
         Iam=$(this);
         Val_Iam=$(this).val();
         ID='#'+Iam.attr('name');
-        Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').not($(ID)).addClass('hide');
+        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).addClass('hide');
         $(ID).toggleClass('hide');
         CheckClass();
     })
@@ -331,7 +331,7 @@ $(document).ready(function () {
 
 
 
-//======================служебные функции======================
+//======================ГЛОБАЛЬНЫЕ служебные функции======================
 const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
       BUTTON_A=$('#jumps .JS_ButtonModal[value="A"]'),
       BUTTON_ROTATION=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
@@ -341,7 +341,7 @@ const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
 
 function ResetModal(Iam) {
     let section;
-    section=Iam.closest('.JS_Section-modal');
+    section=Iam.closest('.JS_Section-Modal');
     ResetButtons(section);
     Hide_HeadersSections(Iam);
     ShowHeader();
@@ -367,7 +367,7 @@ function ShowHeader() {
     return ;
 }
 function Hide_HeadersSections(Iam) {
-    Iam.closest('.JS_Section-modal').find('.mod-header .JS_Section').addClass('hide');
+    Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').addClass('hide');
     return;
 }
 //======================КОНЕЦ служебные функции======================
