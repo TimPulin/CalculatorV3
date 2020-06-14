@@ -105,7 +105,7 @@
 				</div><!--edn steps-->
 
 			</div><!--end header-->
-			<div class="mod-body JS_Section-tables tabCalc-wrap">
+			<div class="mod-body JS_Section-Tables tabCalc-wrap">
 						<div class="wrap-tables">
 							<!--========================step========================-->
 
@@ -135,8 +135,8 @@
 								<table class="table JS_Section-Table tabCalc-content">
 									<tr>
 										<td colspan="5">
-											<button class="buttonFlat JS_RemoveJump  float-left" disabled>убрать прыжок</button>
-											<button class="buttonFlat JS_AddJump  float-right" disabled>добавить прыжок</button>
+											<button class="JS_RemoveJump buttonFlat float-left" disabled>убрать прыжок</button>
+											<button class="JS_AddJump buttonFlat float-right" disabled>добавить прыжок</button>
 										</td>
 									</tr>
 									<!--first jump-->
@@ -182,8 +182,8 @@
 						</div>
 			</div><!--end mod-body-->
 			<div class="modal-footer">
-				<button class="JS_Button_ResetModal buttonFlat">Сброс</button>
-				<button class="JS_Button_SaveModal buttonFlat">Сохранить</button>
+				<button class="JS_Reset buttonFlat">Сброс</button>
+				<button class="JS_Save buttonFlat">Сохранить</button>
 			</div>
 
          </div><!--end content-->
@@ -191,7 +191,7 @@
 </div><!--end modal-window-->
 		<main class="row"><!-- ряд (основной)-->
 			<div class="col-lg-10 offset-lg-1"><!--первая колонка (калькулятор)-->
-				<table class="table calc"><!--таблица-->
+				<table class="table calc JS_Section-Table"><!--таблица-->
 					<thead class="bg-violet">
 						<tr>
 							<th>#</th>
@@ -201,17 +201,32 @@
 							<th>Баллы</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr class="JS_Section">
-							<td>1</td>
-							<td class=""><div class="boxoutput-name"><output class="JS_output-nameOfElement"></output></div></td>
-							<td><input type="button" class="JS_X JS_Button buttonGuideBasic" value="X"></td>
-							<td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" value="0"></td>
-							<td><output class="JS_output-valueOfElement">0.00</output></td>
-						</tr>
-					</<tbody>
+					<tbody class="tbody" id="MainTableBody">
+	<!--	<tr class="JS_Section-El">
+			<td class="JS_NumberOfline"></td><td class=""><div class="boxoutput-name"><output class="JS_output-nameOfElement"></output></div></td>
+			<td><input type="button" class="JS_X JS_Button buttonGuideBasic" value="X"></td>
+			<td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" value="0"></td>
+			<td><output class="lineoutput-scores">0.00</output></td>
+		</tr>
+
+		<tr class="JS_Section-El">
+			<td class="JS_NumberOfline"></td><td class=""><div class="boxoutput-name"><output class="JS_output-nameOfElement"></output></div></td>
+			<td><input type="button" class="JS_X JS_Button buttonGuideBasic" value="X"></td>
+			<td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" value="0"></td>
+			<td><output class="lineoutput-scores">0.00</output></td>
+		</tr>
+
+		<tr class="JS_Section-El">
+			<td class="JS_NumberOfline"></td><td class=""><div class="boxoutput-name"><output class="JS_output-nameOfElement"></output></div></td>
+			<td><input type="button" class="JS_X JS_Button buttonGuideBasic" value="X"></td>
+			<td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" value="0"></td>
+			<td><output class="lineoutput-scores">0.00</output></td>
+		</tr>-->
 
 
+					</tbody>
+
+				</table>
 			</div><!--END первая колонка (калькулятор)-->
 		</main><!--END ряд (основной)-->
 <script src="../../jquery-3.3.1.slim.min.js"></script>
@@ -219,8 +234,9 @@
 <!--		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
 		<!--<script src="https://calculatorfs.ru/js/bootstrap.min.js?version=3"></script>-->
-		<script src="ModalWorkV3.js?version=2"></script>
-		<script src="ModalCalculateV3.js?version=1"></script>
-		<script src="ModalConfigV3.js?version=1"></script>
+		<script src="PrintTable.js?version=2"></script>
+		<script src="ModalWorkV3.js?version=1"></script>
+		<script src="ModalCalculateV3.js?version=12"></script>
+		<script src="ModalConfigV3.js?version=12"></script>
 		<script src="listofvalue.js?version=2"></script>
 </body>
