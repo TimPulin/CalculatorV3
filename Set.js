@@ -3,7 +3,8 @@ $(document).ready(function() {
     let section,
         Ich,
         IndexT;
-    let Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
+    const Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
+    const IamSectionTable=$('#ElementModal .JS_Section-Tables .JS_Section-Table');
 
     $('.boxoutput-name').click(function() {
         Ich=$(this);
@@ -16,8 +17,9 @@ $(document).ready(function() {
         GetID();
         CheckAvailabilityInfo();
         if(CheckAvailabilityInfo()){
-            ResetModal(Iam);
+           // ResetModal(Iam);
             SetActiveTab();
+            SetLines();
             SetButtons();
         }
         else {
@@ -50,8 +52,16 @@ $(document).ready(function() {
         return;
     }
 
+    function SetLines() {
+        IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
+            MakeTheName_Modal(index);
+            $(this).addClass(arrLinesClass[NameOfProperty]);
+console.log(arrLinesClass[NameOfProperty])
+        })
+    }
+
     function SetButtons() {
-        $('#ElementModal .JS_Section-Tables .JS_Section-Table').eq(IndexT).find('.JS_Button').each(function(index) {
+        IamSectionTable.eq(IndexT).find('.JS_Button').each(function(index) {
             MakeTheName_Modal(index);
             $(this).addClass(arrButtonsClass[NameOfProperty]);
             $(this).val(arrButtonsVal[NameOfProperty]);
