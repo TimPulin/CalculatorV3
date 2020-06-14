@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
     let section,
-        Ich;
+        Ich,
+        IndexT;
     let Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
 
     $('.boxoutput-name').click(function() {
@@ -14,9 +15,10 @@ $(document).ready(function() {
     function DirectorSetConfig() {
         GetID();
         CheckAvailabilityInfo();
-        ResetModal(Iam);
         if(CheckAvailabilityInfo()){
+            ResetModal(Iam);
             SetActiveTab();
+            SetButtons();
         }
         else {
             Iam.eq(2).click();
@@ -42,10 +44,18 @@ $(document).ready(function() {
 
     function SetActiveTab() {
         MakeTheName_Modal(0);
-        $('#ElementModal .tabCalc-links .tabCalc-link').eq(arrActiveTabs[NameOfProperty]).click();
+        IndexT=arrActiveTabs[NameOfProperty];
+        Iam.eq(IndexT).click();
+
         return;
     }
 
-
+    function SetButtons() {
+        $('#ElementModal .JS_Section-Tables .JS_Section-Table').eq(IndexT).find('.JS_Button').each(function(index) {
+            MakeTheName_Modal(index);
+            $(this).addClass(arrButtonsClass[NameOfProperty]);
+            $(this).val(arrButtonsVal[NameOfProperty]);
+        })
+    }
 
 })
