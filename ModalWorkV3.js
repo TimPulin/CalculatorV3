@@ -40,15 +40,13 @@ $(document).ready(function(){
     });
 
     function AddRemove_Active(){
-        Iam.closest('.tabCalc-links').find('.tabCalc-link').each(function(index){
-            $(this).removeClass('active');
-        });
+        Iam.closest('.tabCalc-links').find('.tabCalc-link.active').removeClass('active');
         Iam.addClass('active');
     };
 
     function ShowHide_tabel(){
-        Iam.closest('.tabCalc-wrap').find('.tabCalc-content').addClass('hide');
-        Iam.closest('.tabCalc-wrap').find('.tabCalc-content').eq(Index).removeClass('hide');
+        Iam.closest('.tabCalc-wrap').find('.tabCalc-content.active').removeClass('active');
+        Iam.closest('.tabCalc-wrap').find('.tabCalc-content').eq(Index).addClass('active');
     };
 
 
@@ -69,13 +67,13 @@ $(document).ready(function() {
         Iam=$(this);
         Val_Iam=$(this).val();
         ID='#'+Iam.attr('name');
-        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).addClass('hide');
-        $(ID).toggleClass('hide');
+        $(ID).toggleClass('active');
+        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
         CheckClass();
     })
 
     function CheckClass() {
-        if($(ID).hasClass('hide')){
+        if(!$(ID).hasClass('active')){
             ShowHeader();
         } else {
             addClassActiveTo_JS_ButtonModal();
@@ -325,49 +323,3 @@ $(document).ready(function () {
     })
 })
 //======================КОНЕЦ Блокировка/Разблокировка кнопок===================================
-
-
-
-
-
-
-//======================ГЛОБАЛЬНЫЕ служебные функции======================
-const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
-      BUTTON_A=$('#jumps .JS_ButtonModal[value="A"]'),
-      BUTTON_ROTATION=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
-      BUTTON_CHSQ=$('#steps .JS_ButtonModal[value="ChSq"]'),
-      BUTTON_STEPLEVEL=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(0) .JS_Level');
-
-
-function ResetModal(Iam) {
-    let section;
-    section=Iam.closest('.JS_Section-Modal');
-    ResetButtons(section);
-    Hide_HeadersSections(Iam);
-    ShowHeader();
-    $('.JS_Section-El.active').addClass('hide');
-    section.find('.headeroutput-name').val('');
-    section.find('.headeroutput-scores').val('0.00');
-    $('#ElementModal .JS_RemoveJump, #ElementModal .JS_AddJump').prop('disabled', true);
-    return;
-}
-function ResetButtons(section) {
-    section.find('.JS_Button').removeClass('active activeColor');
-    section.find('.JS_Name').val('элемент');
-    section.find('.JS_Level').val('B').prop('disabled', false);
-    section.find('.JS_Rotation').val('1').prop('disabled', false);
-    $('#ElementModal .JS_V').prop('disabled', true);
-    section.find('.lineoutput-scores').text('0.00');
-    section.find('.JS_Edge').prop('disabled', true);
-
-}
-
-function ShowHeader() {
-    $('#header_title').removeClass('hide');
-    return ;
-}
-function Hide_HeadersSections(Iam) {
-    Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').addClass('hide');
-    return;
-}
-//======================КОНЕЦ служебные функции======================
