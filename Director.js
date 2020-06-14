@@ -5,6 +5,7 @@ var ID,
     IndexT;
 let arrActiveTabs={};
 let arrButtonsClass={};
+let arrButtonsVal={};    
 
 
 
