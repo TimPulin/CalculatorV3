@@ -48,7 +48,6 @@ $(document).ready(function() {
         MakeTheName_Modal(0);
         IndexT=arrActiveTabs[NameOfProperty];
         Iam.eq(IndexT).click();
-
         return;
     }
 
@@ -56,15 +55,15 @@ $(document).ready(function() {
         IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
             MakeTheName_Modal(index);
             $(this).addClass(arrLinesClass[NameOfProperty]);
-console.log(arrLinesClass[NameOfProperty])
         })
     }
 
     function SetButtons() {
-        IamSectionTable.eq(IndexT).find('.JS_Button').each(function(index) {
+        IamSectionTable.eq(IndexT).find('.JS_Button, .JS_RemoveJump, .JS_AddJump').each(function(index) {
             MakeTheName_Modal(index);
             $(this).addClass(arrButtonsClass[NameOfProperty]);
             $(this).val(arrButtonsVal[NameOfProperty]);
+            $(this).prop('disabled', arrButtonsAbility[NameOfProperty]);
         })
     }
 
