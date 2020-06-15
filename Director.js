@@ -7,6 +7,7 @@ let arrActiveTabs={};
 let arrButtonsClass={};
 let arrButtonsVal={};
 let arrLinesClass={};
+let arrButtonsAbility={};
 
 
 
@@ -33,10 +34,10 @@ function ResetModal(Iam) {
     ResetButtons(section);
     Hide_HeadersSections(Iam);
     ShowHeader();
-    $('.JS_Section-El.active').addClass('hide');
+    $('#ElementModal').find('.JS_Section-Table .JS_Section-El').not(':only-child').not(':first').removeClass('active');
     section.find('.headeroutput-name').val('');
     section.find('.headeroutput-scores').val('0.00');
-    $('#ElementModal .JS_RemoveJump, #ElementModal .JS_AddJump').prop('disabled', true);
+    $('#ElementModal').find('.JS_RemoveJump, .JS_AddJump').prop('disabled', true);
     return;
 }
 function ResetButtons(section) {
