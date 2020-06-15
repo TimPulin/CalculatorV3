@@ -34,13 +34,12 @@ $(document).ready(function() {
         IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
             MakeTheName_Modal(index);
             arrLinesClass[NameOfProperty]=$(this).attr('class');
-
         })
         return;
     }
 
     function GetButtonsInfo() {
-        IamSectionTable.eq(IndexT).find('.JS_Button').each(function(index) {
+        IamSectionTable.eq(IndexT).find('.JS_Button, .JS_RemoveJump, .JS_AddJump').each(function(index) {
             MakeTheName_Modal(index);
             if($(this).hasClass('activeColor')){
                 arrButtonsClass[NameOfProperty]='active activeColor'
@@ -48,6 +47,7 @@ $(document).ready(function() {
             else {
                 arrButtonsClass[NameOfProperty]='';
             }
+            arrButtonsAbility[NameOfProperty]=$(this).prop('disabled');
             arrButtonsVal[NameOfProperty]=$(this).val();
             return;
         })
