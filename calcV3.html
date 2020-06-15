@@ -15,9 +15,9 @@
 
 <div class="modal fade" id="ElementModal" tabindex="-1" role="dialog" aria-labelledby="windowElementLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
-         <div class="modal-content JS_Section-modal bg-ccc rounded" ><!--modal content-->
+         <div class="modal-content JS_Section-Modal bg-ccc rounded" ><!--modal content-->
 			<div class="mod-header">
-				<div class="JS_Section" id="header_title">
+				<div class="JS_Section active" id="header_title">
 					<div class="header-box text-center">
 						<output class="headeroutput-title">Прыжок</output>
 					</div>
@@ -31,7 +31,7 @@
 					</table>
 				</div><!--end section with title-->
 				<!--rotations-->
-				<div class="JS_Section hide" id="rotations">
+				<div class="JS_Section" id="rotations">
 					<div class="header-box text-center">
 						Обороты
 					</div>
@@ -45,7 +45,7 @@
 					</table>
 				</div><!--edn rotations-->
 				<!--jumps-->
-				<div class="JS_Section hide" id="jumps">
+				<div class="JS_Section" id="jumps">
 					<div class="header-box text-center">
 						Прыжки
 					</div>
@@ -62,7 +62,7 @@
 					</table>
 				</div><!--end jumps-->
 				<!--=======================levels========================-->
-				<div class="JS_Section hide" id="levels">
+				<div class="JS_Section" id="levels">
 					<div class="header-box text-center">
 						Уровни
 					</div>
@@ -77,7 +77,7 @@
 					</table>
 				</div><!--edn levels-->
 				<!--=======================spins========================-->
-				<div class="JS_Section hide" id="spins">
+				<div class="JS_Section" id="spins">
 					<div class="header-box text-center">
 						Вращения
 					</div>
@@ -105,22 +105,22 @@
 				</div><!--edn steps-->
 
 			</div><!--end header-->
-			<div class="mod-body JS_Section-tables tabCalc-wrap">
+			<div class="mod-body JS_Section-Tables tabCalc-wrap">
 						<div class="wrap-tables">
 							<!--========================step========================-->
-
-								<table class="table JS_Section-Table tabCalc-content hide">
-									<tr class="JS_Section-El">
+							<div class="tabCalc-content">
+								<table class="table JS_Section-Table">
+									<tr class="JS_Section-El active">
 										<td ><input type="button" class="JS_Button JS_Name  buttonFlat" name="steps" value="элемент"></td>
 										<td><input type="button" class="JS_Button JS_Level  buttonFlat" name="levels" value="B"></td>
 										<td ><output class="lineoutput-scores">0.00</output></td>
 									</tr>
 								</table><!--end table step-->
-
+							</div>
 							<!--============================spins=====================================-->
-
-								<table class="table JS_Section-Table tabCalc-content hide">
-									<tr class="JS_Section-El">
+							<div class="tabCalc-content">
+								<table class="table JS_Section-Table">
+									<tr class="JS_Section-El active">
 										<td ><input type="button" class="JS_Button JS_Fly   buttonFlat" value="F"></td>
 										<td><input type="button" class="JS_Button JS_ChangeLeg   buttonFlat" value="C"></td>
 										<td ><input type="button" class="JS_Button JS_Name  buttonFlat" name="spins" value="элемент"></td>
@@ -129,18 +129,19 @@
 										<td ><output class="lineoutput-scores">0.00</output></td>
 									</tr>
 								</table><!--end table spin-->
-
+							</div>
 							<!--=====================================jump=======================-->
-
-								<table class="table JS_Section-Table tabCalc-content">
+							<div class="tabCalc-content active">
+								<table class="table JS_Section-Table">
 									<tr>
 										<td colspan="5">
-											<button class="buttonFlat JS_RemoveJump  float-left" disabled>убрать прыжок</button>
-											<button class="buttonFlat JS_AddJump  float-right" disabled>добавить прыжок</button>
+											<button class="JS_RemoveJump buttonFlat float-left" disabled>убрать прыжок</button>
+											<button class="JS_AddJump buttonFlat float-right" disabled>добавить прыжок</button>
 										</td>
 									</tr>
 									<!--first jump-->
-									<tr class="JS_Section-El">
+
+									<tr class="JS_Section-El active">
 										<td class="float-left"><input type="button" class="JS_Button JS_Rotation   buttonFlat" name="rotations" value="1"></td>
 										<td><input type="button" class="JS_Button JS_Name  buttonFlat" name="jumps" value="элемент"></td>
 										<td>
@@ -150,8 +151,10 @@
 										<td ><input type="button" class="JS_Button JS_Edge  buttonFlat" disabled value="e"></td>
 										<td ><output class="lineoutput-scores">0.00</output></td>
 									</tr>
+
 									<!--second jump-->
-									<tr class="JS_Section-El hide">
+
+									<tr class="JS_Section-El">
 										<td class="float-left"><input type="button" class="JS_Button JS_Rotation  buttonFlat" name="rotations" value="1"></button></td>
 										<td><input type="button" class="JS_Button JS_Name  buttonFlat" name="jumps"  value="элемент"></td>
 										<td>
@@ -161,8 +164,10 @@
 										<td ><input type="button" class="JS_Button JS_Edge  buttonFlat" disabled value="e"></button></td>
 										<td ><output class="lineoutput-scores">0.00</output></td>
 									</tr>
+
 									<!--fird jump-->
-									<tr class="JS_Section-El hide">
+
+									<tr class="JS_Section-El">
 										<td class="float-left"><input type="button" class="JS_Button JS_Rotation  buttonFlat" name="rotations" value="1"></td>
 										<td><input type="button" class="JS_Button JS_Name  buttonFlat" name="jumps" value="элемент"></td>
 										<td>
@@ -174,6 +179,7 @@
 									</tr>
 
 								</table><!--end table jumps-->
+							</div>
 						</div><!-- end wrap-tables-->
 						<div class="tabCalc-links">
 							<button class="tabCalc-link" value="Дорожка">Дорожка</button>
@@ -182,8 +188,8 @@
 						</div>
 			</div><!--end mod-body-->
 			<div class="modal-footer">
-				<button class="JS_Button_ResetModal buttonFlat">Сброс</button>
-				<button class="JS_Button_SaveModal buttonFlat">Сохранить</button>
+				<button class="JS_Reset buttonFlat">Сброс</button>
+				<button class="JS_Save buttonFlat">Сохранить</button>
 			</div>
 
          </div><!--end content-->
@@ -191,7 +197,7 @@
 </div><!--end modal-window-->
 		<main class="row"><!-- ряд (основной)-->
 			<div class="col-lg-10 offset-lg-1"><!--первая колонка (калькулятор)-->
-				<table class="table calc"><!--таблица-->
+				<table class="table calc JS_Section-Table"><!--таблица-->
 					<thead class="bg-violet">
 						<tr>
 							<th>#</th>
@@ -201,17 +207,13 @@
 							<th>Баллы</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr class="JS_Section">
-							<td>1</td>
-							<td class=""><div class="boxoutput-name"><output class="JS_output-nameOfElement"></output></div></td>
-							<td><input type="button" class="JS_X JS_Button buttonGuideBasic" value="X"></td>
-							<td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" value="0"></td>
-							<td><output class="JS_output-valueOfElement">0.00</output></td>
-						</tr>
-					</<tbody>
+					<tbody class="tbody" id="MainTableBody">
+	
 
 
+					</tbody>
+
+				</table>
 			</div><!--END первая колонка (калькулятор)-->
 		</main><!--END ряд (основной)-->
 <script src="../../jquery-3.3.1.slim.min.js"></script>
@@ -219,7 +221,12 @@
 <!--		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
 		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
 		<!--<script src="https://calculatorfs.ru/js/bootstrap.min.js?version=3"></script>-->
-		<script src="calcV3.js?version=2"></script>
-		<script src="calculationV3.js?version=1"></script>
+		<script src="PrintTable.js?version=1"></script>
+		<script src="ModalWorkV3.js?version=1"></script>
+		<script src="ModalCalculateV3.js?version=1"></script>
+<script src="Director.js?version=1"></script>
+<script src="Compiling.js?version=1"></script>
+<script src="Set.js?version=1"></script>
+	<!--	<script src="ModalConfigV3.js?version=12"></script>-->
 		<script src="listofvalue.js?version=2"></script>
 </body>

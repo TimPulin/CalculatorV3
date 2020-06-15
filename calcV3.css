@@ -45,6 +45,19 @@
     /*height: 18px;*/
 }
 .mod-header .table {margin-top: 10px; margin-bottom: 0;}
+
+#ElementModal .mod-header .JS_Section{
+    display: none;
+}
+#ElementModal .mod-header .JS_Section.active{
+    display: block;
+}
+#ElementModal .JS_Section-Table .JS_Section-El{
+    display: none;
+}
+#ElementModal .JS_Section-Table .JS_Section-El.active{
+    display: table-row;
+}
 /*КОНЕЦ стили шапки модульного окна*/
 /*======================стили основной части модульного окна*/
 .mod-body{padding: 0;}
@@ -58,6 +71,14 @@
     border-right: 2px solid #aaa;
     border-radius: 5px;
 }
+#ElementModal .tabCalc-content{
+    display: none;
+}
+#ElementModal .tabCalc-content.active{
+    display: block;
+}
+
+
 /*КОНЕЦ стили основной части модульного окна*/
 /*=========================стили подвала модульного окна*/
 .mod-footer{
