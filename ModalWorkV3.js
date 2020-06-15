@@ -150,7 +150,7 @@ $(document).ready(function() {
 
       $('#ElementModal .JS_AddJump').click(function() {
           Iam=$(this);
-          $(this).closest('.JS_Section-Table').find('.JS_Section-El.hide:first').removeClass('hide').addClass('active');
+          $(this).closest('.JS_Section-Table').find('.JS_Section-El:not(.active):first').addClass('active');
           Hide_HeadersSections(Iam);
           ShowHeader();
       })
@@ -201,14 +201,14 @@ $(document).ready(function () {
             })
             $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="A"])').click(function() {
                 CheckAmountLinesHide();
-                if(amount != 0){
+                if(amount < 3){
                     $('#ElementModal .JS_AddJump').prop('disabled', false);
                 }
             })
             $('#ElementModal .JS_RemoveJump').click(function () {
                 Iam=$(this);
                 CheckAmountLinesHide();
-                if(amount != 0){
+                if(amount < 3){
                     $('#ElementModal .JS_AddJump').prop('disabled', false);
                 }
             })
@@ -216,7 +216,7 @@ $(document).ready(function () {
             $('.JS_RemoveJump').click(function () {
                 Iam=$(this);
                 CheckAmountLinesHide();
-                if(amount == 2){
+                if(amount < 2){
                     $(this).prop('disabled', true);
                 }
             })
@@ -229,7 +229,7 @@ $(document).ready(function () {
              //блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
              BUTTON_A.click(function() {
                  if(IndexS==1){
-                     if(amount==0){
+                     if(amount==3){
                          $('#ElementModal .JS_RemoveJump').trigger('click');
                      }
                      $('#ElementModal .JS_AddJump').prop('disabled', true);
@@ -240,7 +240,8 @@ $(document).ready(function () {
              //КОНЕЦ блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
 
             function CheckAmountLinesHide() {
-                amount=$(Iam).closest('.JS_Section-Table').find('.JS_Section-El.hide').length;
+                amount=$(Iam).closest('.JS_Section-Table').find('.JS_Section-El.active').length;
+
                 return;
             }
 
@@ -289,7 +290,7 @@ $(document).ready(function () {
                 BUTTON_ROTATION.prop('disabled', true);
             })
             $('.JS_RemoveJump').click(function() {
-                if (amount==2){
+                if (amount==1){
                     BUTTON_ROTATION.prop('disabled', false);
                 }
             })
