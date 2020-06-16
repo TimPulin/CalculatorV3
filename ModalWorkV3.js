@@ -16,6 +16,13 @@ $(document).ready(function() {
     })
     function HideModal() {$('#ElementModal').modal('hide');}
     //КОНЕЦ закрытие модального окна
+
+    $('.JS_Goe').click(function() {
+        $('#GoeModal').modal();
+    })
+    $('#GoeModal .JS_ButtonModal').click(function() {
+         $('#GoeModal').modal('hide');
+    })
 })
 //======================КОНЕЦ вызов и закрытие модального окна======================
 
@@ -324,3 +331,42 @@ $(document).ready(function () {
     })
 })
 //======================КОНЕЦ Блокировка/Разблокировка кнопок===================================
+
+
+
+//=======================работа кнопок для #GOEMODAL==================================
+$(document).ready(function() {
+
+    let Val_Iam;
+
+    $('.JS_Goe').click(function() {
+        Val_Iam=$(this).val();
+        addClassActiveTo_JS_ButtonModal();
+    })
+
+    function addClassActiveTo_JS_ButtonModal(){
+        $("#GoeModal .JS_ButtonModal").each(function(){
+            jQuery(this).removeClass('active activeColor');
+            if(Val_Iam==jQuery(this).val()){
+                jQuery(this).addClass('active activeColor');
+            }
+        })
+    }
+
+})
+
+$(document).ready(function() {
+    let Iam;
+
+    $('#GoeModal .JS_ButtonModal').click(function() {
+        Iam=$(this);
+        Iam.closest('.JS_Section').find('.JS_ButtonModal').each(function(index){
+            jQuery(this).removeClass('active activeColor');
+        })
+        Iam.addClass('active activeColor');
+    })
+})
+
+
+
+//=======================КОНЕЦ работа кнопок для #GOEMODAL==================================
