@@ -1,20 +1,32 @@
 //======================ГЛОБАЛЬНЫЕ служебные функции======================
 
-var ID,
+let ID,
     NameOfProperty,
-    IndexT;
+    IndexT,
+    sectionINmain;
+
+let Ich;
+
+
 let arrActiveTabs={};
 let arrButtonsClass={};
 let arrButtonsVal={};
 let arrLinesClass={};
 let arrButtonsAbility={};
+let arrOutputs={};
+
+let arrNamesInMain={};
+let arrScoresInMain={};
 
 
-
+function GetID() {
+    ID=Ich.closest('.JS_Section-Table').find('.JS_Section-El').index(sectionINmain);
+    return;
+}
 
 //====создание имени====
 function MakeTheName_Modal(index) {
-    NameOfProperty='line'+ID+'_index'+index;
+    NameOfProperty='line'+ID+1+'_index'+index;
     return;
 }
 //====КОНЕЦ создание имени====
