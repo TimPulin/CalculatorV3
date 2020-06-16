@@ -3,9 +3,10 @@ $(document).ready(function() {
     let Iam,
         IamModal,
         IndexT,
+        text,
         IamSectionTable;
 
-    $('.JS_Section-Modal .JS_Save').click(function() {
+    $('#ElementModal .JS_Save').click(function() {
         Iam=$(this);
         IamModal=$(this).closest('.JS_Section-Modal');
         IamSectionTable=IamModal.find('.JS_Section-Tables .JS_Section-Table');
@@ -16,6 +17,7 @@ $(document).ready(function() {
         FindActiveTab();
         GetSectionInfo();
         GetButtonsInfo();
+        GetOutputInfo();
 
     }
 
@@ -50,6 +52,12 @@ $(document).ready(function() {
             arrButtonsAbility[NameOfProperty]=$(this).prop('disabled');
             arrButtonsVal[NameOfProperty]=$(this).val();
             return;
+        })
+    }
+    function GetOutputInfo() {
+        IamModal.find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function(index) {
+            MakeTheName_Modal(index);
+            arrOutputs[NameOfProperty]=$(this).val();
         })
     }
 
