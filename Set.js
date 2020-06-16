@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
-    let section,
-        Ich,
-        IndexT;
+
+
+    let IndexT;
     const Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
     const IamSectionTable=$('#ElementModal .JS_Section-Tables .JS_Section-Table');
 
     $('.boxoutput-name').click(function() {
         Ich=$(this);
-        section=$(this).closest('.JS_Section-El');
+        sectionINmain=$(this).closest('.JS_Section-El');
         DirectorSetConfig();
     })
 
@@ -17,16 +17,18 @@ $(document).ready(function() {
         GetID();
         CheckAvailabilityInfo();
         if(CheckAvailabilityInfo()){
-           // ResetModal(Iam);
             SetActiveTab();
             SetLines();
             SetButtons();
+            SetOutputs();
         }
         else {
             Iam.eq(2).click();
         }
 
     }
+
+    
 
     function CheckAvailabilityInfo() {
         MakeTheName_Modal(0);
@@ -37,12 +39,6 @@ $(document).ready(function() {
             return true;
         }
     }
-
-    function GetID() {
-        ID=Ich.closest('.JS_Section-Table').find('.JS_Section-El').index(section)+1;
-        return;
-    }
-
 
     function SetActiveTab() {
         MakeTheName_Modal(0);
@@ -56,6 +52,7 @@ $(document).ready(function() {
             MakeTheName_Modal(index);
             $(this).addClass(arrLinesClass[NameOfProperty]);
         })
+        return;
     }
 
     function SetButtons() {
@@ -64,6 +61,14 @@ $(document).ready(function() {
             $(this).addClass(arrButtonsClass[NameOfProperty]);
             $(this).val(arrButtonsVal[NameOfProperty]);
             $(this).prop('disabled', arrButtonsAbility[NameOfProperty]);
+        })
+        return;
+    }
+
+    function SetOutputs() {
+        $('#ElementModal').find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function(index) {
+            MakeTheName_Modal(index);
+            $(this).text(arrOutputs[NameOfProperty]);
         })
     }
 
