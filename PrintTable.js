@@ -21,14 +21,12 @@ $(document).ready(function() {
 
 
 
-for(i=0;i<12;i++){PrintTable()}
+    for(i=0;i<12;i++){PrintTable()}
 
 
     function PrintTable() {
         $(tr).appendTo('.tbody');
         $('.JS_NumberOfline').eq(i).append(i+1)
         return;
-     }
-
-
+    }
 })
