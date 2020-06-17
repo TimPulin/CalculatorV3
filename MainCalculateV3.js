@@ -7,30 +7,31 @@ $(document).ready(function() {
         coefficient,
         compare,
         fullscores;
-    let arrLineScores={};
+
+
     $('.boxoutput-name').click(function() {
         Iam=$(this);
     })
     $('#ElementModal .JS_Save').click(function(){
         DirectorMain();
     })
-
-    $('.JS_Section-Table .JS_Goe').click(function() {
-        Ich=Iam=$(this);
-        sectionINmain=$(this).closest('.JS_Section-El');
-        GetID();
+    $('#ElementModal .JS_Reset').click(function() {
+        arrScoresInMain[NameOfProperty]
+        arrNamesInMain[NameOfProperty]
     })
 
+
     $('.JS_Section-Table .JS_X').click(function() {
-        Ich=Iam=$(this);
-        sectionINmain=$(this).closest('.JS_Section-El');
-        GetID();
+        Iam=$(this);
         DirectorMain();
     })
 
     $(document).ready(function() {
-
         let Val_IamModal;
+
+        $('.JS_Section-Table .JS_Goe').click(function() {
+            Iam=$(this);
+        })
 
         $('#GoeModal .JS_ButtonModal').click(function() {
             Val_IamModal=$(this).val();
@@ -66,7 +67,8 @@ $(document).ready(function() {
     function PrinterMain() {
         Ich.closest('.JS_Section-Table').find('.tableoutput-scores').text(fullscores.toFixed(2));
     }
-//==============функции DirectorLine=====================
+
+    //==============функции DirectorLine=====================
     function DirectorLine() {
         MakeTheName_Modal(0);
         CheckAvailabilityInfo();
@@ -103,13 +105,15 @@ $(document).ready(function() {
 
     function GetGOE() {
         compare=0;
+        bonusGoe=0;
         goe=sectionINmain.find('.JS_Goe').val();
         for(let i=0; i<arrScoresInMain[NameOfProperty].length; i++){
             if(arrScoresInMain[NameOfProperty][i]>compare){
                 compare=arrScoresInMain[NameOfProperty][i];
             }
         }
-        if(arrNamesInMain[NameOfProperty]==='ChSq1'){
+
+        if(arrNamesInMain[NameOfProperty] =='ChSq1'){
             coefficient=20;
         }
         else {
@@ -135,12 +139,6 @@ $(document).ready(function() {
         sectionINmain.find('.lineoutput-scores').text(scores.toFixed(2));
         sectionINmain.find('.lineoutput-name').text(arrNamesInMain[NameOfProperty].join('+'));
     }
-//==============КОНЕЦ функции DirectorLine=====================
-
-
-
-
-
-
+    //==============КОНЕЦ функции DirectorLine=====================
 
 })
