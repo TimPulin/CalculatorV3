@@ -1,12 +1,9 @@
 //======================ГЛОБАЛЬНЫЕ служебные функции======================
 
 let ID,
+    Ich,
     NameOfProperty,
-    IndexT,
     sectionINmain;
-
-let Ich;
-
 
 let arrActiveTabs={};
 let arrButtonsClass={};
@@ -17,6 +14,17 @@ let arrOutputs={};
 
 let arrNamesInMain={};
 let arrScoresInMain={};
+let arrLineScores={};
+
+$(document).ready(function () {
+    $('.JS_Section-Table').find('.boxoutput-name, .JS_Goe, .JS_X').click(function() {
+        Ich=$(this);
+        sectionINmain=$(this).closest('.JS_Section-El');
+        GetID();
+    })
+})
+
+
 
 
 function GetID() {
