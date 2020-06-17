@@ -1,20 +1,15 @@
 $(document).ready(function() {
 
-
-
     let IndexT;
     const Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
     const IamSectionTable=$('#ElementModal .JS_Section-Tables .JS_Section-Table');
 
     $('.boxoutput-name').click(function() {
-        Ich=$(this);
-        sectionINmain=$(this).closest('.JS_Section-El');
         DirectorSetConfig();
     })
 
 
     function DirectorSetConfig() {
-        GetID();
         CheckAvailabilityInfo();
         if(CheckAvailabilityInfo()){
             SetActiveTab();
@@ -28,7 +23,7 @@ $(document).ready(function() {
 
     }
 
-    
+
 
     function CheckAvailabilityInfo() {
         MakeTheName_Modal(0);
