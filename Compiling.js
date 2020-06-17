@@ -3,7 +3,6 @@ $(document).ready(function() {
     let Iam,
         IamModal,
         IndexT,
-        text,
         IamSectionTable;
 
     $('#ElementModal .JS_Save').click(function() {
@@ -18,7 +17,6 @@ $(document).ready(function() {
         GetSectionInfo();
         GetButtonsInfo();
         GetOutputInfo();
-
     }
 
     function FindActiveTab() {
