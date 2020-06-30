@@ -7,6 +7,7 @@ $(document).ready(function() {
         coefficient,
         compare,
         fullscores;
+    let arrNameZero=[''];
 
 
     $('.boxoutput-name').click(function() {
@@ -16,8 +17,10 @@ $(document).ready(function() {
         DirectorMain();
     })
     $('#ElementModal .JS_Reset').click(function() {
-        arrScoresInMain[NameOfProperty]
-        arrNamesInMain[NameOfProperty]
+        MakeTheName_Modal(0);
+        arrScoresInMain[NameOfProperty]=0;
+        arrNamesInMain[NameOfProperty]=$.extend(true, [], arrNameZero);
+        DirectorMain();
     })
 
 
