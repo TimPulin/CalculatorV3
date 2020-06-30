@@ -79,7 +79,7 @@ function Hide_HeadersSections(Iam) {
 }
 //======================КОНЕЦ ГЛОБАЛЬНЫЕ служебные функции======================
 
-//======================сброс массивов==============================
+//======================сброс массивов одной линии==============================
 $(document).ready(function() {
     $('#ElementModal .JS_Reset').click(function(){
         MakeTheName_Modal(0);
@@ -88,8 +88,62 @@ $(document).ready(function() {
 
     function ResetModalArrs() {
         delete arrActiveTabs[NameOfProperty];
-        
+        delete arrButtonsClass[NameOfProperty];
+        delete arrButtonsVal[NameOfProperty];
+        delete arrLinesClass[NameOfProperty];
+        delete arrButtonsAbility[NameOfProperty];
+        delete arrOutputs[NameOfProperty];
     }
 })
 
-//===================КОНЕЦ сброс массивов===================
+//===================КОНЕЦ сброс массивов одной линии===================
+
+//==================сброс массивов всей таблицы============================
+$(document).ready(function() {
+    let section;
+    $('#MainTable .JS_Reset').click(function() {
+        section=$(this).closest('.JS_Section-Table');
+        ResetAllArrs();
+        CleanUpMainTable();
+    })
+
+    function ResetAllArrs() {
+        for (key in arrActiveTabs){
+            delete arrActiveTabs[key];
+        }
+        for (key in arrButtonsClass){
+            delete arrButtonsClass[key];
+        }
+        for (key in arrButtonsVal){
+            delete arrButtonsVal[key];
+        }
+        for (key in arrLinesClass){
+            delete arrLinesClass[key];
+        }
+        for (key in arrButtonsAbility){
+            delete arrButtonsAbility[key];
+        }
+        for (key in arrOutputs){
+            delete arrOutputs[key];
+        }
+        for (key in arrNamesInMain){
+            delete arrNamesInMain[key];
+        }
+        for (key in arrScoresInMain){
+            delete arrScoresInMain[key];
+        }
+        for (key in arrLineScores){
+            delete arrLineScores[key];
+        }
+        return;
+    }
+
+    function CleanUpMainTable() {
+        section.find('.lineoutput-name').val('');
+        section.find('.JS_X').removeClass('active activeColor');
+        section.find('.JS_Goe').val(0).removeClass('active activeColor');
+        section.find('.lineoutput-scores, .tableoutput-scores').val('0.00');
+    }
+})
+
+//==================КОНЕЦ сброс массивов всей таблицы============================
