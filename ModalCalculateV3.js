@@ -74,7 +74,7 @@ $(document).ready(function() {
         Iam.closest('.JS_Section-Table').find('.JS_Section-El').each(function(){
             line=$(this);
             DirectorLine();
-            MakeTheName_Modal(0);
+            //MakeTheName_Modal(0);
             PusherInArr();
         })
         return;
