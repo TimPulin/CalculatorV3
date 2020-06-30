@@ -39,8 +39,6 @@ function MakeTheName_Modal(index) {
 }
 //====КОНЕЦ создание имени====
 
-
-//======================ГЛОБАЛЬНЫЕ служебные функции======================
 const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
       BUTTON_A=$('#jumps .JS_ButtonModal[value="A"]'),
       BUTTON_ROTATION=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
@@ -79,4 +77,19 @@ function Hide_HeadersSections(Iam) {
     Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').removeClass('active');
     return;
 }
-//======================КОНЕЦ служебные функции======================
+//======================КОНЕЦ ГЛОБАЛЬНЫЕ служебные функции======================
+
+//======================сброс массивов==============================
+$(document).ready(function() {
+    $('#ElementModal .JS_Reset').click(function(){
+        MakeTheName_Modal(0);
+        ResetModalArrs();
+    })
+
+    function ResetModalArrs() {
+        delete arrActiveTabs[NameOfProperty];
+        
+    }
+})
+
+//===================КОНЕЦ сброс массивов===================
