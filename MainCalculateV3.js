@@ -22,7 +22,7 @@ $(document).ready(function() {
         arrNamesInMain[NameOfProperty]=$.extend(true, [], arrNameZero);
         DirectorMain();
     })
-
+    
 
     $('.JS_Section-Table .JS_X').click(function() {
         Iam=$(this);
