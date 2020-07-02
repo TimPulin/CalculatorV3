@@ -201,7 +201,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content bg-ccc rounded"><!--контент-->
 			<div class="mod-header">
-				<div class="JS_Section" id="rotations">
+				<div class="JS_Section" id="goe">
 	                <div class="header-box text-center">
 	                    GOE
 	                </div>
@@ -237,10 +237,10 @@
 
 		<main class="row"><!-- ряд (основной)-->
 			<div class="col-lg-10 offset-lg-1"><!--первая колонка (калькулятор)-->
-				<table class="table calc JS_Section-Table" id="MainTable"><!--таблица-->
+				<table class="table  JS_Section-Table" id="MainTable"><!--таблица calc-->
 					<thead class="bg-violet">
 						<tr>
-							<th>#</th>
+							<th class="">#</th>
 							<th>Элемент</th>
 							<th>x</th>
 							<th>GOE</th>
@@ -252,10 +252,10 @@
 
 
 					</tbody>
-					<tr >
-						<td class="">	<button class="JS_Reset buttonFlat">Сброс</button>  </td>
-						<td colspan="3"></td>
-						<td><output class="tableoutput-scores"></output></td>
+					<tr>
+						<td colspan="4" class="pl-0">	<button class="JS_Reset buttonFlat float-left">Сброс</button></td>
+						<td><output class="tableoutput-scores">0.00</output></td>
+
 					</tr>
 				</table>
 			</div><!--END первая колонка (калькулятор)-->
@@ -267,10 +267,11 @@
 		<!--<script src="https://calculatorfs.ru/js/bootstrap.min.js?version=3"></script>-->
 		<script src="PrintTable.js?version=1"></script>
 		<script src="ModalWorkV3.js?version=1"></script>
+		<!--<script src="MainWorkV3.js?version=1"></script>-->
 		<script src="ModalCalculateV3.js?version=1"></script>
 		<script src="Director.js?version=1"></script>
 		<script src="Compiling.js?version=1"></script>
 		<script src="Set.js?version=1"></script>
-		<script src="MainCalculateV3.js?version=1"></script>
+		<script src="MainCalculateV3.js?version=2"></script>
 		<script src="listofvalue.js?version=2"></script>
 </body>
