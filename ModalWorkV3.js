@@ -79,6 +79,12 @@ $(document).ready(function() {
         CheckClass();
     })
 
+    $('.JS_Goe').click(function() {
+        Val_Iam=$(this).val();
+        ID='#'+$(this).attr('name');
+        addClassActiveTo_JS_ButtonModal();
+    })
+
     function CheckClass() {
         if(!$(ID).hasClass('active')){
             ShowHeader();
@@ -137,15 +143,26 @@ $(document).ready(function() {
 //=====================работа кнопок на экране для выбора значения атрибута элемента====
 $(document).ready(function(){
     let Iam;
+
+    $('#GoeModal .JS_ButtonModal').click(function() {
+        Iam=$(this);
+        AddRemove_Active();
+    })
+
     $('#ElementModal .JS_ButtonModal').click(function() {
         Iam=$(this);
+        AddRemove_Active();
+        Hide_HeadersSections(Iam);
+        ShowHeader();
+    })
+
+    function AddRemove_Active() {
         Iam.closest('.JS_Section').find('.JS_ButtonModal').each(function(index){
             jQuery(this).removeClass('active activeColor');
         })
         Iam.addClass('active activeColor');
-        Hide_HeadersSections(Iam);
-        ShowHeader();
-    })
+        return;
+    }
 })
 //=====================КОНЕЦ работа кнопок на экране для выбора значения атрибута элемента====
 
@@ -331,42 +348,3 @@ $(document).ready(function () {
     })
 })
 //======================КОНЕЦ Блокировка/Разблокировка кнопок===================================
-
-
-
-//=======================работа кнопок для #GOEMODAL==================================
-$(document).ready(function() {
-
-    let Val_Iam;
-
-    $('.JS_Goe').click(function() {
-        Val_Iam=$(this).val();
-        addClassActiveTo_JS_ButtonModal();
-    })
-
-    function addClassActiveTo_JS_ButtonModal(){
-        $("#GoeModal .JS_ButtonModal").each(function(){
-            jQuery(this).removeClass('active activeColor');
-            if(Val_Iam==jQuery(this).val()){
-                jQuery(this).addClass('active activeColor');
-            }
-        })
-    }
-
-})
-
-$(document).ready(function() {
-    let Iam;
-
-    $('#GoeModal .JS_ButtonModal').click(function() {
-        Iam=$(this);
-        Iam.closest('.JS_Section').find('.JS_ButtonModal').each(function(index){
-            jQuery(this).removeClass('active activeColor');
-        })
-        Iam.addClass('active activeColor');
-    })
-})
-
-
-
-//=======================КОНЕЦ работа кнопок для #GOEMODAL==================================
