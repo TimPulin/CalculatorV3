@@ -1,5 +1,7 @@
 $(document).ready(function() {
     let Iam,
+        buttonX,
+        buttonGoe,
         scores,
         x,
         goe,
@@ -12,17 +14,28 @@ $(document).ready(function() {
 
     $('.boxoutput-name').click(function() {
         Iam=$(this);
+        buttonX=$(this).closest('.JS_Section-El').find('.JS_X');
+        buttonGoe=$(this).closest('.JS_Section-El').find('.JS_Goe');
     })
     $('#ElementModal .JS_Save').click(function(){
+        if(IndexT==2){
+            buttonX.prop('disabled', false);
+        }
+        else {
+            buttonX.prop('disabled', true).removeClass('active activeColor');
+        }
+        buttonGoe.removeClass('active activeColor').val(0);
         DirectorMain();
     })
     $('#ElementModal .JS_Reset').click(function() {
         MakeTheName_Modal(0);
         arrScoresInMain[NameOfProperty]=0;
         arrNamesInMain[NameOfProperty]=$.extend(true, [], arrNameZero);
+        buttonX.prop('disabled', true).removeClass('active activeColor');
+        buttonGoe.removeClass('active activeColor').val(0);
         DirectorMain();
     })
-    
+
 
     $('.JS_Section-Table .JS_X').click(function() {
         Iam=$(this);
@@ -128,15 +141,36 @@ $(document).ready(function() {
 
     function CounterLIne() {
         scores=0;
+
+
         for(let i=0; i<arrScoresInMain[NameOfProperty].length; i++){
             scores=scores+arrScoresInMain[NameOfProperty][i];
         }
         scores=scores*x+bonusGoe;
+
+        if(arrNamesInMain[NameOfProperty].length==2){
+            let secondjump=arrNamesInMain[NameOfProperty][1].toLowerCase();
+            CheckAxels(secondjump);
+            if(CheckAxels(secondjump)){
+                scores=scores*0.8;
+                arrNamesInMain[NameOfProperty].push('SEQ');
+            }
+        }
         arrLineScores[NameOfProperty]=scores;
 
         return;
     }
 
+    //=========проверка второго элемента - является ли он акселем==========
+    function CheckAxels(secondjump){
+        for (let i=0; i<arrOfAxels.length; i++){
+            if(arrOfAxels[i]===secondjump){
+            return true;
+            }
+        }
+        return false;
+    }
+    //=========КОНЕЦ проверка второго элемента - является ли он акселем==========
 
     function PrinterLine() {
         sectionINmain.find('.lineoutput-scores').text(scores.toFixed(2));
