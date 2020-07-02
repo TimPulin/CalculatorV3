@@ -2,6 +2,7 @@
 
 let ID,
     Ich,
+    IndexT,
     NameOfProperty,
     sectionINmain;
 
@@ -140,7 +141,7 @@ $(document).ready(function() {
 
     function CleanUpMainTable() {
         section.find('.lineoutput-name').val('');
-        section.find('.JS_X').removeClass('active activeColor');
+        section.find('.JS_X').removeClass('active activeColor').prop('disabled', true);
         section.find('.JS_Goe').val(0).removeClass('active activeColor');
         section.find('.lineoutput-scores, .tableoutput-scores').val('0.00');
     }
