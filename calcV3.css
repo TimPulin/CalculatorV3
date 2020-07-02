@@ -16,7 +16,7 @@
 	padding-right:5px;
 }
 .boxoutput-name:hover{
-	color:#ffcc00;
+	color:#ea84ff;
 	content:'\25be';
 }
 /*КОНЕЦ стили вывода имени элемента в таблице*/
@@ -99,10 +99,11 @@
     font-weight:500;
     margin-top: -2px;
     background-color: inherit;
-    border-right: 2px solid  #aaa;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid  #ccc;
     border-top: 2px solid #aaa;
-    border-bottom: 2px solid #aaa;
-    border-radius: 0 0 10px 0;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0 0 5px 5px;
     outline: none;
     cursor: pointer;
     padding: 2px 20px;
@@ -117,6 +118,9 @@
 .tabCalc-links button.active{
     background-color:#f3f4f8 ;
     border-top: 2px solid #f3f4f8;
+    border-bottom: 2px solid #aaa;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid  #aaa;
 }
 /*КОНЕЦ стили заклдок в модальном окне*/
 /*==============================стили кнопок*/
@@ -126,15 +130,16 @@
 	text-decoration: none !important;
 	outline: none !important;
 	border-radius: 5px;
+    border: 1px solid #ccc;
 }
 .buttonFlat:active{
     box-shadow:1px 1px 1px 1px #000 inset, -1px -1px 1px 1px #fff inset;
 }
 
 @media (max-width:575px){
-  .JS_RemoveJump, .JS_AddJump{
-    width: 100%;
-}
+    .JS_RemoveJump, .JS_AddJump{
+        width: 100%;
+    }
 }
 
 /*КОНЕЦ стили кнопок*/
