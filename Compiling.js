@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     let Iam,
         IamModal,
-        IndexT,
+    //    IndexT,
         IamSectionTable;
     let arrTemporaryClass=[];
     let arrTemporaryAble=[];
