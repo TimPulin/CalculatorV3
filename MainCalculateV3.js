@@ -87,25 +87,20 @@ $(document).ready(function() {
     function DirectorLine() {
         MakeTheName_Modal(0);
         CheckAvailabilityInfo();
-        if(CheckAvailabilityInfo()){
-            GetInfoX();
-            GetGOE();
-            CounterLIne();
-            PrinterLine();
-        }
-        else {
-            arrLineScores[NameOfProperty]=0;
-        }
+        GetInfoX();
+        GetGOE();
+        CounterLIne();
+        PrinterLine();
         return;
     }
 
     function CheckAvailabilityInfo() {
         if(arrNamesInMain[NameOfProperty]==undefined){
-            return false;
+            arrScoresInMain[NameOfProperty]=0;
+            arrNamesInMain[NameOfProperty]=$.extend(true, [], arrNameZero);
+            arrLineScores[NameOfProperty]=0;
         }
-        else {
-            return true;
-        }
+        return;
     }
 
     function GetInfoX() {
