@@ -70,25 +70,30 @@ $(document).ready(function() {
         Val_Iam,
         IamModal,
         ID;
-    $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
-        Iam=$(this);
-        Val_Iam=$(this).val();
-        ID='#'+Iam.attr('name');
-        $(ID).toggleClass('active');
-        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
-        CheckClass();
-
-    })
-
     $('.JS_Goe').click(function() {
         Val_Iam=$(this).val();
         ID='#'+$(this).attr('name');
         addClassActiveTo_JS_ButtonModal();
     })
 
+    $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
+        Iam=$(this);
+        Val_Iam=$(this).val();
+        ID='#'+Iam.attr('name');
+        Hide_CurrentHeadersSection();
+        ToggleHeaderSection();
+        CheckClass();
+    })
 
+    function Hide_CurrentHeadersSection() {
+        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
+        return;
+    }
 
-
+    function ToggleHeaderSection() {
+        $(ID).toggleClass('active');
+        return;
+    }
 
     function CheckClass() {
         if(!$(ID).hasClass('active')){
@@ -113,7 +118,7 @@ $(document).ready(function () {
     let Iam;
     $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Galka, .JS_Edge').click(function(){
         Iam=$(this);
-         Hide_HeadersSections(Iam);
+        Hide_HeadersSections(Iam);
         ShowHeader();
     })
 })
