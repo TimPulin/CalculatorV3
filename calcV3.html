@@ -145,6 +145,7 @@
 										<td class="float-left"><input type="button" class="JS_Button JS_Rotation   buttonFlat" name="rotations" value="1"></td>
 										<td><input type="button" class="JS_Button JS_Name  buttonFlat" name="jumps" value="элемент"></td>
 										<td>
+											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="q">
 											<input type="button" class="JS_Button JS_Galka   buttonFlat buttonGalka" value="<">
 											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="<<">
 										</td>
@@ -158,6 +159,7 @@
 										<td class="float-left"><input type="button" class="JS_Button JS_Rotation  buttonFlat" name="rotations" value="1"></button></td>
 										<td><input type="button" class="JS_Button JS_Name  buttonFlat" name="jumps"  value="элемент"></td>
 										<td>
+											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="q">
 											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="<">
 											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="<<">
 										</td>
@@ -171,6 +173,7 @@
 										<td class="float-left"><input type="button" class="JS_Button JS_Rotation  buttonFlat" name="rotations" value="1"></td>
 										<td><input type="button" class="JS_Button JS_Name  buttonFlat" name="jumps" value="элемент"></td>
 										<td>
+											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="q">
 											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="<">
 											<input type="button" class="JS_Button JS_Galka  buttonFlat buttonGalka" value="<<">
 										</td>
@@ -195,12 +198,52 @@
          </div><!--end content-->
 	 </div><!--end modal-dialog-->
 </div><!--end modal-window-->
+
+<!-- Modal GOE -->
+<div class="modal fade" id="GoeModal" tabindex="-1" role="dialog" aria-labelledby="GoeGuideModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content bg-ccc rounded"><!--контент-->
+			<div class="mod-header">
+				<div class="JS_Section" id="goe">
+	                <div class="header-box text-center">
+	                    GOE
+	                </div>
+					<table class="table">
+						<tbody>
+							<tr>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="1">1</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="2">2</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="3">3</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="4">4</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="5">5</button></td>
+							</tr>
+							<tr >
+								<td colspan="5"><button class=" JS_ButtonModal buttonGuideBasic" value="0">0</button></td>
+							</tr>
+							<tr>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="-1">-1</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="-2">-2</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="-3">-3</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="-4">-4</button></td>
+								<td><button class="JS_ButtonModal buttonGuideBasic" value="-5">-5</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div><!--КОНЕЦ хидер-->
+			<div class="modal-footer">
+				<button  class="buttonClose buttonFlat" data-dismiss="modal">Закрыть</button>
+			</div>
+		</div><!--КОНЕЦ контент-->
+	</div>
+</div><!--КОНЕЦ Modal GOE -->
+
 		<main class="row"><!-- ряд (основной)-->
 			<div class="col-lg-10 offset-lg-1"><!--первая колонка (калькулятор)-->
-				<table class="table calc JS_Section-Table"><!--таблица-->
+				<table class="table  JS_Section-Table" id="MainTable"><!--таблица calc-->
 					<thead class="bg-violet">
 						<tr>
-							<th>#</th>
+							<th class="">#</th>
 							<th>Элемент</th>
 							<th>x</th>
 							<th>GOE</th>
@@ -208,11 +251,15 @@
 						</tr>
 					</thead>
 					<tbody class="tbody" id="MainTableBody">
-	
+
 
 
 					</tbody>
+					<tr>
+						<td colspan="4" class="pl-0">	<button class="JS_Reset buttonFlat float-left">Сброс</button></td>
+						<td><output class="tableoutput-scores">0.00</output></td>
 
+					</tr>
 				</table>
 			</div><!--END первая колонка (калькулятор)-->
 		</main><!--END ряд (основной)-->
@@ -223,10 +270,11 @@
 		<!--<script src="https://calculatorfs.ru/js/bootstrap.min.js?version=3"></script>-->
 		<script src="PrintTable.js?version=1"></script>
 		<script src="ModalWorkV3.js?version=1"></script>
+		<!--<script src="MainWorkV3.js?version=1"></script>-->
 		<script src="ModalCalculateV3.js?version=1"></script>
-<script src="Director.js?version=1"></script>
-<script src="Compiling.js?version=1"></script>
-<script src="Set.js?version=1"></script>
-	<!--	<script src="ModalConfigV3.js?version=12"></script>-->
+		<script src="Director.js?version=1"></script>
+		<script src="Compiling.js?version=1"></script>
+		<script src="Set.js?version=1"></script>
+		<script src="MainCalculateV3.js?version=2"></script>
 		<script src="listofvalue.js?version=2"></script>
 </body>

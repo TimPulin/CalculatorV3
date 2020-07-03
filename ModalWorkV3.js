@@ -16,6 +16,13 @@ $(document).ready(function() {
     })
     function HideModal() {$('#ElementModal').modal('hide');}
     //КОНЕЦ закрытие модального окна
+
+    $('.JS_Goe').click(function() {
+        $('#GoeModal').modal();
+    })
+    $('#GoeModal .JS_ButtonModal').click(function() {
+         $('#GoeModal').modal('hide');
+    })
 })
 //======================КОНЕЦ вызов и закрытие модального окна======================
 
@@ -63,14 +70,30 @@ $(document).ready(function() {
         Val_Iam,
         IamModal,
         ID;
+    $('.JS_Goe').click(function() {
+        Val_Iam=$(this).val();
+        ID='#'+$(this).attr('name');
+        addClassActiveTo_JS_ButtonModal();
+    })
+
     $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
         Iam=$(this);
         Val_Iam=$(this).val();
         ID='#'+Iam.attr('name');
-        $(ID).toggleClass('active');
-        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
+        Hide_CurrentHeadersSection();
+        ToggleHeaderSection();
         CheckClass();
     })
+
+    function Hide_CurrentHeadersSection() {
+        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
+        return;
+    }
+
+    function ToggleHeaderSection() {
+        $(ID).toggleClass('active');
+        return;
+    }
 
     function CheckClass() {
         if(!$(ID).hasClass('active')){
@@ -130,15 +153,26 @@ $(document).ready(function() {
 //=====================работа кнопок на экране для выбора значения атрибута элемента====
 $(document).ready(function(){
     let Iam;
+
+    $('#GoeModal .JS_ButtonModal').click(function() {
+        Iam=$(this);
+        AddRemove_Active();
+    })
+
     $('#ElementModal .JS_ButtonModal').click(function() {
         Iam=$(this);
+        AddRemove_Active();
+        Hide_HeadersSections(Iam);
+        ShowHeader();
+    })
+
+    function AddRemove_Active() {
         Iam.closest('.JS_Section').find('.JS_ButtonModal').each(function(index){
             jQuery(this).removeClass('active activeColor');
         })
         Iam.addClass('active activeColor');
-        Hide_HeadersSections(Iam);
-        ShowHeader();
-    })
+        return;
+    }
 })
 //=====================КОНЕЦ работа кнопок на экране для выбора значения атрибута элемента====
 

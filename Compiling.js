@@ -2,10 +2,13 @@ $(document).ready(function() {
 
     let Iam,
         IamModal,
-        IndexT,
+    //    IndexT,
         IamSectionTable;
+    let arrTemporaryClass=[];
+    let arrTemporaryAble=[];
+    let arrTemporaryVal=[];
 
-    $('.JS_Section-Modal .JS_Save').click(function() {
+    $('#ElementModal .JS_Save').click(function() {
         Iam=$(this);
         IamModal=$(this).closest('.JS_Section-Modal');
         IamSectionTable=IamModal.find('.JS_Section-Tables .JS_Section-Table');
@@ -13,14 +16,14 @@ $(document).ready(function() {
     })
 
     function DirectorCompilingConfig() {
+        MakeTheName_Modal(0);
         FindActiveTab();
         GetSectionInfo();
         GetButtonsInfo();
-
+        GetOutputInfo();
     }
 
     function FindActiveTab() {
-        MakeTheName_Modal(0);
         IamModal.find('.tabCalc-links .tabCalc-link').each(function(index) {
             if($(this).hasClass('active')){
                 arrActiveTabs[NameOfProperty]=index;
@@ -31,26 +34,53 @@ $(document).ready(function() {
     }
 
     function GetSectionInfo() {
-        IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
-            MakeTheName_Modal(index);
-            arrLinesClass[NameOfProperty]=$(this).attr('class');
+        Cleaner_arrTemporaryClass();
+        IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function() {
+            arrTemporaryClass.push($(this).attr('class'))
         })
+        arrLinesClass[NameOfProperty]=$.extend(true, [], arrTemporaryClass);
         return;
     }
 
     function GetButtonsInfo() {
+        Cleaner_arrTemporaryClass();
+        Cleaner_arrTemporaryAble();
+        Cleaner_arrTemporaryVal();
         IamSectionTable.eq(IndexT).find('.JS_Button, .JS_RemoveJump, .JS_AddJump').each(function(index) {
-            MakeTheName_Modal(index);
+
             if($(this).hasClass('activeColor')){
-                arrButtonsClass[NameOfProperty]='active activeColor'
+                arrTemporaryClass.push('active activeColor')
             }
             else {
-                arrButtonsClass[NameOfProperty]='';
+                arrTemporaryClass.push('')
             }
-            arrButtonsAbility[NameOfProperty]=$(this).prop('disabled');
-            arrButtonsVal[NameOfProperty]=$(this).val();
-            return;
+            arrTemporaryAble.push($(this).prop('disabled'));
+            arrTemporaryVal.push($(this).val())
         })
+        arrButtonsClass[NameOfProperty]=$.extend(true, [], arrTemporaryClass);
+        arrButtonsAbility[NameOfProperty]=$.extend(true, [], arrTemporaryAble);
+        arrButtonsVal[NameOfProperty]=$.extend(true, [], arrTemporaryVal);
+        return;
+    }
+    function GetOutputInfo() {
+        Cleaner_arrTemporaryVal();
+        IamModal.find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function() {
+            arrTemporaryVal.push($(this).val());
+        })
+        arrOutputs[NameOfProperty]=$.extend(true, [], arrTemporaryVal);
+    }
+
+    function Cleaner_arrTemporaryClass() {
+        arrTemporaryClass.splice(0, arrTemporaryClass.length);
+        return;
+    }
+    function Cleaner_arrTemporaryAble() {
+        arrTemporaryAble.splice(0, arrTemporaryAble.length);
+        return;
+    }
+    function Cleaner_arrTemporaryVal() {
+        arrTemporaryVal.splice(0, arrTemporaryVal.length);
+        return;
     }
 
 })

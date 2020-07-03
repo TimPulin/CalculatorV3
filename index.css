@@ -19,7 +19,7 @@ th,td{text-align: center;}
 .bg-body{background: #f3f4f8;}
 .bg-nav{background:#66A1D2;} /*цвет навигационной панели*/ /*6666ff*/
 .bg-header{background: linear-gradient(to bottom right, #fff   35%, #66A1D2);} /*#66A1D2*/
-//.bg-header{background:#66A1D2;}
+/*.bg-header{background:#66A1D2;}*/
 .bg-firstrow{background:#8fb7d9;}
 .bg-header_gradient{background: linear-gradient(to top left, #66A1D2 50%, #fff);}
 .bg-bread_crumbs{background: #f3f4f8 !important;}
@@ -629,6 +629,7 @@ blockquote {
 	font-size: 16px;
 	color: #000;
 	outline: none !important;
+    border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow: .1em .1em .2em #666;
     -webkit-box-shadow:.1em .1em .2em #666;

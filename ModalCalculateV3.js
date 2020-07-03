@@ -8,21 +8,24 @@ $(document).ready(function() {
         linename,
         linescores,
         tablescores;
-    let arrNames=[];
-    let arrScores=[];
+    let arrName=[];
+    let arrScore=[];
 
     $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
         Iam=$(this);
     })
 
+    $('.tabCalc-link').click(function() {
+        CleanerModalArrs();
+    })
+
+
 //=============================перенос информации с экрана для выбора значения атрибута элемента
     $(document).ready(function () {
-        let IamModal,
-            Val_IamModal;
+        let Val_IamModal;
 
-       $('.JS_ButtonModal').click(function() {
-            IamModal=$(this);
-            Val_IamModal=IamModal.val();
+       $('#ElementModal .JS_ButtonModal').click(function() {
+            Val_IamModal=$(this).val();
             AddInLine_ValButtonModal();
             CheckClass();
             DirectorModal();
@@ -54,38 +57,48 @@ $(document).ready(function() {
         DirectorModal();
     })
 
-    $('#ElementModal .JS_V, #ElementModal .JS_Galka, #ElementModal .JS_Edge, #ElementModal .JS_RemoveJump').click(function() {
+    $('#ElementModal').find('.JS_V, .JS_Galka, .JS_Edge, .JS_RemoveJump').click(function() {
         Iam=$(this);
         DirectorModal();
     })
+
 
     function DirectorModal() {
         Packer();
         ComputerModal();
         PrinterModal();
+        return;
     }
 
     //==============все функции Packer==============================
     function Packer() {
+        MakeTheName_Modal(0);
         CleanerModalArrs();
         Iam.closest('.JS_Section-Table').find('.JS_Section-El').each(function(){
             line=$(this);
             DirectorLine();
-            PusherInArr();
+            PusherInArr_forModal();
         })
         return;
     }
     function CleanerModalArrs(){
-        arrNames.splice(0, arrNames.length);
-        arrScores.splice(0, arrScores.length);
-        return
+        arrName.splice(0, arrName.length);
+        arrScore.splice(0, arrScore.length);
+        delete arrNamesInMain[NameOfProperty];
+        delete arrScoresInMain[NameOfProperty];
+
+        return;
     }
-    function PusherInArr() {
-        arrScores.push(linescores);
+    function PusherInArr_forModal() {
         if (linename!=null){
-            arrNames.push(linename);
+            arrName.push(linename);
+            arrScore.push(linescores);
         }
+            arrNamesInMain[NameOfProperty]=$.extend(true, [], arrName);
+            arrScoresInMain[NameOfProperty]=$.extend(true, [], arrScore);
+
     }
+
     //==============КОНЕЦ все функции Packer==============================
 
     //================все функции DirectorLine=====================
@@ -121,20 +134,20 @@ $(document).ready(function() {
     //=================================подсчет баллов====================================================
     function ComputerModal() {
         GetTablescores();
-        if(arrNames.length==2){
-            let secondjump=arrNames[1].toLowerCase();
+        if(arrName.length==2){
+            let secondjump=arrName[1].toLowerCase();
             CheckAxels(secondjump);
             if(CheckAxels(secondjump)){
                 tablescores=tablescores*0.8;
-                arrNames.push('SEQ');
+                arrName.push('SEQ');
             }
         }
         return;
     }
     function GetTablescores() {
         tablescores=0;
-        for(let i=0; i<arrScores.length; i++){
-            tablescores=tablescores+arrScores[i];
+        for(let i=0; i<arrScore.length; i++){
+            tablescores=tablescores+arrScore[i];
         }
         return;
     }
@@ -151,8 +164,9 @@ $(document).ready(function() {
     //===============КОНЕЦ подсчет баллов====================================================
 
     function PrinterModal(){
-        $('#ElementModal .headeroutput-name').text(arrNames.join('+'));
-        $('#ElementModal .headeroutput-scores').text(tablescores.toFixed(2))
+        $('#ElementModal .headeroutput-name').text(arrName.join('+'));
+        $('#ElementModal .headeroutput-scores').text(tablescores.toFixed(2));
+        return;
     }
 
 

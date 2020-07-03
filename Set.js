@@ -1,26 +1,22 @@
 $(document).ready(function() {
 
-    let section,
-        Ich,
-        IndexT;
+      let IndexT;
     const Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
     const IamSectionTable=$('#ElementModal .JS_Section-Tables .JS_Section-Table');
 
     $('.boxoutput-name').click(function() {
-        Ich=$(this);
-        section=$(this).closest('.JS_Section-El');
         DirectorSetConfig();
     })
 
 
     function DirectorSetConfig() {
-        GetID();
+        MakeTheName_Modal(0);
         CheckAvailabilityInfo();
         if(CheckAvailabilityInfo()){
-           // ResetModal(Iam);
             SetActiveTab();
             SetLines();
             SetButtons();
+            SetOutputs();
         }
         else {
             Iam.eq(2).click();
@@ -28,8 +24,9 @@ $(document).ready(function() {
 
     }
 
+
+
     function CheckAvailabilityInfo() {
-        MakeTheName_Modal(0);
         if(arrActiveTabs[NameOfProperty]==undefined){
             return false;
         }
@@ -38,14 +35,7 @@ $(document).ready(function() {
         }
     }
 
-    function GetID() {
-        ID=Ich.closest('.JS_Section-Table').find('.JS_Section-El').index(section)+1;
-        return;
-    }
-
-
     function SetActiveTab() {
-        MakeTheName_Modal(0);
         IndexT=arrActiveTabs[NameOfProperty];
         Iam.eq(IndexT).click();
         return;
@@ -53,17 +43,23 @@ $(document).ready(function() {
 
     function SetLines() {
         IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
-            MakeTheName_Modal(index);
-            $(this).addClass(arrLinesClass[NameOfProperty]);
+            $(this).addClass(arrLinesClass[NameOfProperty][index]);
         })
+        return;
     }
 
     function SetButtons() {
         IamSectionTable.eq(IndexT).find('.JS_Button, .JS_RemoveJump, .JS_AddJump').each(function(index) {
-            MakeTheName_Modal(index);
-            $(this).addClass(arrButtonsClass[NameOfProperty]);
-            $(this).val(arrButtonsVal[NameOfProperty]);
-            $(this).prop('disabled', arrButtonsAbility[NameOfProperty]);
+            $(this).addClass(arrButtonsClass[NameOfProperty][index]);
+            $(this).val(arrButtonsVal[NameOfProperty][index]);
+            $(this).prop('disabled', arrButtonsAbility[NameOfProperty][index]);
+        })
+        return;
+    }
+
+    function SetOutputs() {
+        $('#ElementModal').find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function(index) {
+            $(this).text(arrOutputs[NameOfProperty][index]);
         })
     }
 
