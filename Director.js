@@ -76,7 +76,7 @@ function ShowHeader() {
     return ;
 }
 function Hide_HeadersSections(Iam) {
-    Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').removeClass('active');
+    Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section.active').removeClass('active');
     return;
 }
 //======================КОНЕЦ ГЛОБАЛЬНЫЕ служебные функции======================
