@@ -69,6 +69,7 @@ $(document).ready(function() {
     let Iam,
         Val_Iam,
         IamModal,
+        sectionActive,
         ID;
     $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
         Iam=$(this);
@@ -77,6 +78,7 @@ $(document).ready(function() {
         $(ID).toggleClass('active');
         Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
         CheckClass();
+
     })
 
     $('.JS_Goe').click(function() {
@@ -84,6 +86,10 @@ $(document).ready(function() {
         ID='#'+$(this).attr('name');
         addClassActiveTo_JS_ButtonModal();
     })
+
+
+
+    
 
     function CheckClass() {
         if(!$(ID).hasClass('active')){
@@ -108,7 +114,7 @@ $(document).ready(function () {
     let Iam;
     $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Galka, .JS_Edge').click(function(){
         Iam=$(this);
-        Hide_HeadersSections(Iam);
+         Hide_HeadersSections(Iam);
         ShowHeader();
     })
 })
