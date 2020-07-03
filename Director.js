@@ -52,6 +52,7 @@ function ResetModal(Iam) {
     section=Iam.closest('.JS_Section-Modal');
     ResetButtons(section);
     Hide_HeadersSections(Iam);
+
     ShowHeader();
     $('#ElementModal').find('.JS_Section-Table .JS_Section-El').not(':only-child').not(':first').removeClass('active');
     section.find('.headeroutput-name').val('');
