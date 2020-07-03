@@ -15,6 +15,9 @@ $(document).ready(function() {
         Iam=$(this);
     })
 
+    $('.tabCalc-link').click(function() {
+        CleanerModalArrs();
+    })
 
 
 //=============================перенос информации с экрана для выбора значения атрибута элемента
@@ -74,23 +77,28 @@ $(document).ready(function() {
         Iam.closest('.JS_Section-Table').find('.JS_Section-El').each(function(){
             line=$(this);
             DirectorLine();
-            PusherInArr();
+            PusherInArr_forModal();
         })
         return;
     }
     function CleanerModalArrs(){
         arrName.splice(0, arrName.length);
         arrScore.splice(0, arrScore.length);
+        delete arrNamesInMain[NameOfProperty];
+        delete arrScoresInMain[NameOfProperty];
+
         return;
     }
-    function PusherInArr() {
+    function PusherInArr_forModal() {
         if (linename!=null){
             arrName.push(linename);
             arrScore.push(linescores);
+        }
             arrNamesInMain[NameOfProperty]=$.extend(true, [], arrName);
             arrScoresInMain[NameOfProperty]=$.extend(true, [], arrScore);
-        }
+
     }
+
     //==============КОНЕЦ все функции Packer==============================
 
     //================все функции DirectorLine=====================
