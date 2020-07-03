@@ -6,7 +6,6 @@ $(document).ready(function() {
         x,
         goe,
         bonusGoe,
-        coefficient,
         compare,
         fullscores;
     let arrNameZero=[''];
@@ -130,18 +129,16 @@ $(document).ready(function() {
         }
 
         if(arrNamesInMain[NameOfProperty] =='ChSq1'){
-            coefficient=20;
+            bonusGoe=0.5*goe;
         }
         else {
-            coefficient=10;
+            bonusGoe=compare/10*goe;
         }
-        bonusGoe=compare/coefficient*goe;
         return;
     }
 
     function CounterLIne() {
         scores=0;
-
 
         for(let i=0; i<arrScoresInMain[NameOfProperty].length; i++){
             scores=scores+arrScoresInMain[NameOfProperty][i];
@@ -177,5 +174,4 @@ $(document).ready(function() {
         sectionINmain.find('.lineoutput-name').text(arrNamesInMain[NameOfProperty].join('+'));
     }
     //==============КОНЕЦ функции DirectorLine=====================
-
 })
