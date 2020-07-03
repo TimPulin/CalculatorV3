@@ -69,7 +69,6 @@ $(document).ready(function() {
     let Iam,
         Val_Iam,
         IamModal,
-        sectionActive,
         ID;
     $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
         Iam=$(this);
@@ -89,7 +88,7 @@ $(document).ready(function() {
 
 
 
-    
+
 
     function CheckClass() {
         if(!$(ID).hasClass('active')){
