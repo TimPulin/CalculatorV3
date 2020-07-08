@@ -1,5 +1,3 @@
-
-
 //====================вычисления в модульном окне==========
 $(document).ready(function() {
     let Iam,
@@ -18,7 +16,6 @@ $(document).ready(function() {
     $('.tabCalc-link').click(function() {
         CleanerModalArrs();
     })
-
 
 //=============================перенос информации с экрана для выбора значения атрибута элемента
     $(document).ready(function () {
@@ -168,9 +165,5 @@ $(document).ready(function() {
         $('#ElementModal .headeroutput-scores').text(tablescores.toFixed(2));
         return;
     }
-
-
-
-
 })
 //====================КОНЕЦ вычисления в модульном окне==========
