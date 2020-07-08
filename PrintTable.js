@@ -5,16 +5,26 @@ $(document).ready(function() {
                 <td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" name="goe" value="0"></td>\
                 <td><output class="lineoutput-scores">0.00</output></td>\
             </tr>';
+
+    let lastrow= '<tr>\
+                    <td colspan="4" class="pl-0">	<button class="JS_Reset buttonFlat float-left">Сброс</button></td>\
+                    <td><output class="tableoutput-scores">0.00</output></td>\
+                  </tr>';
+
     let i=0;
 
     for(i=0;i<12;i++){
         PrintTable()
     }
+    PrintLastRow();
 
     function PrintTable() {
         $(tr).appendTo('.tbody');
         $('.JS_NumberOfline').eq(i).append(i+1)
         return;
+    }
+    function PrintLastRow() {
+        $(lastrow).appendTo('.tbody');
     }
 
   /*setInterval(function() {
@@ -28,7 +38,4 @@ $(document).ready(function() {
         }
 
     }, 100);*/
-
-
-
 })
