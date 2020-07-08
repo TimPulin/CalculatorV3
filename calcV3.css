@@ -46,10 +46,29 @@
 .mod-header .table {margin-top: 10px; margin-bottom: 0;}
 
 #ElementModal .mod-header .JS_Section{
-    display: none;
+    width: 100%;
+    height:0px;
+    opacity: 0;
 }
 #ElementModal .mod-header .JS_Section.active{
-    display: block;
+    width: 100%;
+    height:100%;
+    opacity: 1;
+
+-webkit-transition: height 1.4s;
+       -moz-transition:  height 1.4s;
+       -o-transition:  height 1.4s;
+       transition:  height 1.4s
+
+ /*   -webkit-transform: translate(10,0);
+    -moz-transform: translate(10,0);
+    -o-transform: translate(10,0);
+    -ms-transform: translate(10,0);
+    transform: translate(10,0);*/
+    -webkit-transition-duration:  2s;
+    -moz-transition-duration:  2s;
+    -o-transition-duration:  2s;
+    transition-duration: 2s;
 }
 #ElementModal .JS_Section-Table .JS_Section-El{
     display: none;
@@ -57,7 +76,9 @@
 #ElementModal .JS_Section-Table .JS_Section-El.active{
     display: table-row;
 }
-/*КОНЕЦ стили шапки модульного окна*/
+
+/*============================КОНЕЦ стили шапки модульного окна=================*/
+
 /*======================стили основной части модульного окна*/
 .mod-body{padding: 0;}
 .modal .wrap-tables{
