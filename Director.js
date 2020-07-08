@@ -25,9 +25,6 @@ $(document).ready(function () {
     })
 })
 
-
-
-
 function GetID() {
     ID=Ich.closest('.JS_Section-Table').find('.JS_Section-El').index(sectionINmain);
     return;
