@@ -24,8 +24,6 @@ $(document).ready(function() {
 
     }
 
-
-
     function CheckAvailabilityInfo() {
         if(arrActiveTabs[NameOfProperty]==undefined){
             return false;
@@ -62,5 +60,4 @@ $(document).ready(function() {
             $(this).text(arrOutputs[NameOfProperty][index]);
         })
     }
-
 })
