@@ -9,7 +9,11 @@
 	margin: 0px;
     height: 25px;
 }
-.boxoutput-name:active{box-shadow:1px 1px 1px 1px #999 inset, -1px -1px 1px 1px #fff inset;}
+.boxoutput-name:active{
+    box-shadow:1px 1px 1px 1px #999 inset, -1px -1px 1px 1px #fff inset;
+    -webkit-box-shadow:1px 1px 1px 1px #999 inset, -1px -1px 1px 1px #fff inset;
+    -moz-box-shadow:1px 1px 1px 1px #999 inset, -1px -1px 1px 1px #fff inset;
+}
 .boxoutput-name:after{
 	content:'\25be';
 	float:right;
