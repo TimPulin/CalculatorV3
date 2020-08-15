@@ -1,62 +1,64 @@
 jQuery(document).ready(function() {
 
 //================================PrintTable==============================
-$(document).ready(function() {
-    let tr = '<tr class="JS_Section-El">\
+/*
+jQuery(document).ready(function() {
+    var tr = '<tr class="JS_Section-El">\
                 <td class="JS_NumberOfline"></td><td class=""><div class="boxoutput-name"><output class="lineoutput-name"></output></div></td>\
                 <td><input type="button" class="JS_X JS_Button buttonGuideBasic" value="X" disabled></td>\
                 <td><input type="button" class="JS_Goe JS_Button buttonGuideBasic" name="goe" value="0"></td>\
                 <td><output class="lineoutput-scores">0.00</output></td>\
             </tr>';
 
-    let lastrow= '<tr>\
+    var lastrow= '<tr>\
                     <td colspan="4" class="pl-0">	<button class="JS_Reset buttonFlat float-left">Сброс</button></td>\
                     <td><output class="tableoutput-scores">0.00</output></td>\
                   </tr>';
 
-    let i=0;
+    var i=0;
 
     for(i=0;i<12;i++){
         PrintTable()
     }
-    PrintLastRow();
+    //PrintLastRow();
 
     function PrintTable() {
-        $(tr).appendTo('.tbody');
-        $('.JS_NumberOfline').eq(i).append(i+1)
+        jQuery(tr).appendTo('.tbody');
+        jQuery('.JS_NumberOfline').eq(i).append(i+1)
         return;
     }
     function PrintLastRow() {
-        $(lastrow).appendTo('.tbody');
+        jQuery(lastrow).appendTo('.tbody');
     }
 })
+*/
 //================================КОНЕЦ PrintTable==============================
 
 //=========================ModalWorkV3====================================
 //==================вызов и закрытие модального окна======================
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let Iam;
     //вызов модального окна
     jQuery('.boxoutput-name').click(function(){
-        $('#ElementModal').modal();
+        jQuery('#ElementModal').modal();
     });
     //закрытие модального окна
-    $('#ElementModal .JS_Save').click(function() {
+    jQuery('#ElementModal .JS_Save').click(function() {
          HideModal();
     })
-    $('#ElementModal .JS_Reset').click(function() {
-        Iam=$(this);
+    jQuery('#ElementModal .JS_Reset').click(function() {
+        Iam=jQuery(this);
         HideModal();
         ResetModal(Iam);
     })
-    function HideModal() {$('#ElementModal').modal('hide');}
+    function HideModal() {jQuery('#ElementModal').modal('hide');}
     //КОНЕЦ закрытие модального окна
 
-    $('.JS_Goe').click(function() {
-        $('#GoeModal').modal();
+    jQuery('.JS_Goe').click(function() {
+        jQuery('#GoeModal').modal();
     })
-    $('#GoeModal .JS_ButtonModal').click(function() {
-         $('#GoeModal').modal('hide');
+    jQuery('#GoeModal .JS_ButtonModal').click(function() {
+         jQuery('#GoeModal').modal('hide');
     })
 })
 //======================КОНЕЦ вызов и закрытие модального окна======================
@@ -65,13 +67,13 @@ $(document).ready(function() {
 //===========================ПОВЕДЕНИЕ КНОПОК=========================================
 
 //========================Переключение вкладок в модальном окне==
-$(document).ready(function(){
+jQuery(document).ready(function(){
     let Iam,
         Index,
         Title_Modal,
         section;
-    $('.tabCalc-link').click(function(){
-        Iam=$(this);
+    jQuery('.tabCalc-link').click(function(){
+        Iam=jQuery(this);
         Index=Iam.closest('.tabCalc-links').find('.tabCalc-link').index(Iam);
         Title_Modal=Iam.val();
         AddRemove_Active();
@@ -100,20 +102,20 @@ $(document).ready(function(){
 //========================КОНЕЦ Переключение вкладок в модальном окне==
 
 //====================вызов экрана для выбора значения атрибута элемента==========
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let Iam,
         Val_Iam,
         IamModal,
         ID;
-    $('.JS_Goe').click(function() {
-        Val_Iam=$(this).val();
-        ID='#'+$(this).attr('name');
+    jQuery('.JS_Goe').click(function() {
+        Val_Iam=jQuery(this).val();
+        ID='#'+jQuery(this).attr('name');
         addClassActiveTo_JS_ButtonModal();
     })
 
-    $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
-        Iam=$(this);
-        Val_Iam=$(this).val();
+    jQuery('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
+        Iam=jQuery(this);
+        Val_Iam=jQuery(this).val();
         ID='#'+Iam.attr('name');
         Hide_CurrentHeadersSection();
         ToggleHeaderSection();
@@ -121,24 +123,24 @@ $(document).ready(function() {
     })
 
     function Hide_CurrentHeadersSection() {
-        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not($(ID)).removeClass('active');
+        Iam.closest('.JS_Section-Modal').find('.mod-header .JS_Section').not(jQuery(ID)).removeClass('active');
         return;
     }
 
     function ToggleHeaderSection() {
-        $(ID).toggleClass('active');
+        jQuery(ID).toggleClass('active');
         return;
     }
 
     function CheckClass() {
-        if(!$(ID).hasClass('active')){
+        if(!jQuery(ID).hasClass('active')){
             ShowHeader();
         } else {
             addClassActiveTo_JS_ButtonModal();
         }
     }
     function addClassActiveTo_JS_ButtonModal(){
-        $(ID).find(".JS_ButtonModal").each(function(index){
+        jQuery(ID).find(".JS_ButtonModal").each(function(index){
             jQuery(this).removeClass('active activeColor');
             if(Val_Iam==jQuery(this).val()){
                 jQuery(this).addClass('active activeColor');
@@ -149,10 +151,10 @@ $(document).ready(function() {
 //====================КОНЕЦ вызов экрана для выбора значения атрибута элемента==========
 
 //=======================закрытие экранов "выбор значения атрибута элемента" и открытие заголовка модульного окна=======
-$(document).ready(function () {
+jQuery(document).ready(function () {
     let Iam;
-    $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Galka, .JS_Edge').click(function(){
-        Iam=$(this);
+    jQuery('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Galka, .JS_Edge').click(function(){
+        Iam=jQuery(this);
         Hide_HeadersSections(Iam);
         ShowHeader();
     })
@@ -160,16 +162,16 @@ $(document).ready(function () {
 //=======================КОНЕЦ закрытие экранов "выбор значения атрибута элемента"=======
 
 //===============================активация кнопок при выборе значения атрибута==========
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let Iam;
 
-    $('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Edge, .JS_X').click(function() {
-        $(this).toggleClass('active activeColor');
+    jQuery('.JS_Fly, .JS_ChangeLeg, .JS_V, .JS_Edge, .JS_X').click(function() {
+        jQuery(this).toggleClass('active activeColor');
 
     })
 
-    $('.JS_Galka').click(function() {
-        Iam=$(this);
+    jQuery('.JS_Galka').click(function() {
+        Iam=jQuery(this);
         Iam.toggleClass('active activeColor');
         Iam.parent().find('.JS_Galka').not(Iam).each(function(index){
             jQuery(this).removeClass('active activeColor');
@@ -177,25 +179,25 @@ $(document).ready(function() {
     })
 })
 
-$(document).ready(function() {
-    $('.JS_Level, .JS_Rotation').click(function() {
-        $(this).addClass('active activeColor');
+jQuery(document).ready(function() {
+    jQuery('.JS_Level, .JS_Rotation').click(function() {
+        jQuery(this).addClass('active activeColor');
 
     })
 })
 //===============================КОНЕЦ поведение кнопок при выборе значения атрибута==========
 
 //=====================работа кнопок на экране для выбора значения атрибута элемента====
-$(document).ready(function(){
+jQuery(document).ready(function(){
     let Iam;
 
-    $('#GoeModal .JS_ButtonModal').click(function() {
-        Iam=$(this);
+    jQuery('#GoeModal .JS_ButtonModal').click(function() {
+        Iam=jQuery(this);
         AddRemove_Active();
     })
 
-    $('#ElementModal .JS_ButtonModal').click(function() {
-        Iam=$(this);
+    jQuery('#ElementModal .JS_ButtonModal').click(function() {
+        Iam=jQuery(this);
         AddRemove_Active();
         Hide_HeadersSections(Iam);
         ShowHeader();
@@ -213,18 +215,18 @@ $(document).ready(function(){
 
 //========================добавление/удаление прыжка в модальном окне==================
     //ДОЛЖНО БЫТЬ ВЫШЕ @разблокировка кнопок "добавить прыжок"@
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let section,
         Iam;
 
-      $('#ElementModal .JS_AddJump').click(function() {
-          Iam=$(this);
-          $(this).closest('.JS_Section-Table').find('.JS_Section-El:not(.active):first').addClass('active');
+      jQuery('#ElementModal .JS_AddJump').click(function() {
+          Iam=jQuery(this);
+          jQuery(this).closest('.JS_Section-Table').find('.JS_Section-El:not(.active):first').addClass('active');
           Hide_HeadersSections(Iam);
           ShowHeader();
       })
-      $('#ElementModal .JS_RemoveJump').click(function() {
-          Iam=$(this);
+      jQuery('#ElementModal .JS_RemoveJump').click(function() {
+          Iam=jQuery(this);
           section=Iam.closest('.JS_Section-Table').find('.JS_Section-El.active:last')
           ResetButtons(section);
           section.removeClass('active').addClass('hide');
@@ -237,19 +239,19 @@ $(document).ready(function() {
 
 
 //======================Блокировка/Разблокировка кнопок==================================================
-$(document).ready(function () {
+jQuery(document).ready(function () {
 
     //==блокировка/разблокировка кнопки "E"
-    $(document).ready(function() {
+    jQuery(document).ready(function() {
         let section;
         let button;
-        $('.JS_Name').click(function() {
-            section=$(this).closest('.JS_Section-El');
+        jQuery('.JS_Name').click(function() {
+            section=jQuery(this).closest('.JS_Section-El');
         })
-        $('#jumps .JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"]').click(function() {
+        jQuery('#jumps .JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"]').click(function() {
             section.find('.JS_Edge').prop('disabled', false);
         })
-        $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
+        jQuery('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="F"], #jumps .JS_ButtonModal[value="Lz"])').click(function() {
             button=section.find('.JS_Edge');
             button.removeClass('active activeColor');
             button.prop('disabled', true);
@@ -257,59 +259,59 @@ $(document).ready(function () {
     })
     //==КОНЕЦ блокировка/разблокировка кнопки "E"
 
-    $(document).ready(function(){
+    jQuery(document).ready(function(){
         let amount, //переменная используется для кнопок "добавить/удалить прыжок" и кнопки "Eu"
             IndexS;
 
         //===блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
-        $(document).ready(function() {
+        jQuery(document).ready(function() {
             let Iam;
 
-            $('#ElementModal .JS_Name').click(function() {
-                Iam=$(this);
+            jQuery('#ElementModal .JS_Name').click(function() {
+                Iam=jQuery(this);
             })
-            $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="A"])').click(function() {
+            jQuery('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="A"])').click(function() {
                 CheckAmountLinesHide();
                 if(amount < 3){
-                    $('#ElementModal .JS_AddJump').prop('disabled', false);
+                    jQuery('#ElementModal .JS_AddJump').prop('disabled', false);
                 }
             })
-            $('#ElementModal .JS_RemoveJump').click(function () {
-                Iam=$(this);
+            jQuery('#ElementModal .JS_RemoveJump').click(function () {
+                Iam=jQuery(this);
                 CheckAmountLinesHide();
                 if(amount < 3){
-                    $('#ElementModal .JS_AddJump').prop('disabled', false);
+                    jQuery('#ElementModal .JS_AddJump').prop('disabled', false);
                 }
             })
 
-            $('.JS_RemoveJump').click(function () {
-                Iam=$(this);
+            jQuery('.JS_RemoveJump').click(function () {
+                Iam=jQuery(this);
                 CheckAmountLinesHide();
                 if(amount < 2){
-                    $(this).prop('disabled', true);
+                    jQuery(this).prop('disabled', true);
                 }
             })
 
-            $('#ElementModal .JS_AddJump').click(function () {
-               $(this).prop('disabled', true);
-                $('#ElementModal .JS_RemoveJump').prop('disabled', false);;
+            jQuery('#ElementModal .JS_AddJump').click(function () {
+               jQuery(this).prop('disabled', true);
+                jQuery('#ElementModal .JS_RemoveJump').prop('disabled', false);;
             })
 
              //блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
              BUTTON_A.click(function() {
                  if(IndexS==1){
                      if(amount==3){
-                         $('#ElementModal .JS_RemoveJump').trigger('click');
+                         jQuery('#ElementModal .JS_RemoveJump').trigger('click');
                      }
-                     $('#ElementModal .JS_AddJump').prop('disabled', true);
+                     jQuery('#ElementModal .JS_AddJump').prop('disabled', true);
                  }else {
-                     $('#ElementModal .JS_AddJump').prop('disabled', false);
+                     jQuery('#ElementModal .JS_AddJump').prop('disabled', false);
                 }
              })
              //КОНЕЦ блокировка/разблокировка кнопки "добавить прыжок" в зависимости от кнопки "A"
 
             function CheckAmountLinesHide() {
-                amount=$(Iam).closest('.JS_Section-Table').find('.JS_Section-El.active').length;
+                amount=jQuery(Iam).closest('.JS_Section-Table').find('.JS_Section-El.active').length;
 
                 return;
             }
@@ -318,21 +320,21 @@ $(document).ready(function () {
         //===КОНЕЦ блокировка/разблокировка кнопок "добавить прыжок" и "удалить прыжок"
 
         //====================блокировка/разблокировка кнопок   в секции "прыжки"===========
-       $(document).ready(function() {
+       jQuery(document).ready(function() {
             let IndexT,
                 section,
                 table;
-            const NAMESECONDLINE=$('.JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Name'),
-                  BUTTONSJUMPS=$('#jumps .JS_ButtonModal');
+            const NAMESECONDLINE=jQuery('.JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Name'),
+                  BUTTONSJUMPS=jQuery('#jumps .JS_ButtonModal');
 
 
             //представление кнопок выбора атрибута прыжка в секции "прыжки"
-            $('#ElementModal .JS_Name').click(function() {
-                table=$(this).closest('.JS_Section-Table');
-                IndexT=$(this).closest('.JS_Section-Tables').find('.JS_Section-Table').index(table);
+            jQuery('#ElementModal .JS_Name').click(function() {
+                table=jQuery(this).closest('.JS_Section-Table');
+                IndexT=jQuery(this).closest('.JS_Section-Tables').find('.JS_Section-Table').index(table);
                 if(IndexT==2){
-                    section=$(this).closest('.JS_Section-El');
-                    IndexS=$(this).closest('.JS_Section-Table').find('.JS_Section-El').index(section);
+                    section=jQuery(this).closest('.JS_Section-El');
+                    IndexS=jQuery(this).closest('.JS_Section-Table').find('.JS_Section-El').index(section);
                     //представление прыжков в первой линии
                     if(IndexS==0){
                         BUTTON_EU.prop('disabled', true);
@@ -340,13 +342,13 @@ $(document).ready(function () {
                     //представление прыжков во второй линии
                     } else if (IndexS==1){
                         BUTTONSJUMPS.not('.JS_ButtonModal[value="Lz"]').prop('disabled', false);
-                        $('#jumps .JS_ButtonModal[value="Lz"]').prop('disabled', true);
+                        jQuery('#jumps .JS_ButtonModal[value="Lz"]').prop('disabled', true);
                      //представление прыжков в третьей линии
                     } else if(IndexS==2) {
                         if(NAMESECONDLINE.val()=='Eu'){
                             BUTTONSJUMPS.not('.JS_ButtonModal[value="S"], .JS_ButtonModal[value="F"]').prop('disabled', true);
                         }else {
-                            $('.JS_ButtonModal[value="A"], .JS_ButtonModal[value="Eu"], .JS_ButtonModal[value="Lz"]').prop('disabled', true);
+                            jQuery('.JS_ButtonModal[value="A"], .JS_ButtonModal[value="Eu"], .JS_ButtonModal[value="Lz"]').prop('disabled', true);
                             BUTTONSJUMPS.not('.JS_ButtonModal[value="A"], .JS_ButtonModal[value="Eu"], .JS_ButtonModal[value="Lz"]').prop('disabled', false);
                         }
                     }
@@ -358,12 +360,12 @@ $(document).ready(function () {
             BUTTON_EU.click(function() {
                 BUTTON_ROTATION.prop('disabled', true);
             })
-            $('.JS_RemoveJump').click(function() {
+            jQuery('.JS_RemoveJump').click(function() {
                 if (amount==1){
                     BUTTON_ROTATION.prop('disabled', false);
                 }
             })
-            $('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="Eu"])').click(function() {
+            jQuery('#jumps .JS_ButtonModal:not(.JS_ButtonModal[value="Eu"])').click(function() {
                 if(IndexS==1){
                      BUTTON_ROTATION.prop('disabled', false);
                 }
@@ -374,17 +376,17 @@ $(document).ready(function () {
             BUTTON_CHSQ.click(function() {
                 BUTTON_STEPLEVEL.prop('disabled', true);
             })
-            $('#steps .JS_ButtonModal[value="StSq"]').click(function() {
+            jQuery('#steps .JS_ButtonModal[value="StSq"]').click(function() {
                  BUTTON_STEPLEVEL.prop('disabled', false);
             })
             //КОНЕЦ блокировка/разблокировка кнопки "JS_Level" в зависимости от кнопки "StSq"
 
             //блокировка кнопки "V"
-            $('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
-                if($('#ElementModal  .JS_Fly').hasClass('active') || $('#ElementModal .JS_ChangeLeg').hasClass('active')){
-                    $('#ElementModal .JS_V').prop('disabled', false);
+            jQuery('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
+                if(jQuery('#ElementModal  .JS_Fly').hasClass('active') || jQuery('#ElementModal .JS_ChangeLeg').hasClass('active')){
+                    jQuery('#ElementModal .JS_V').prop('disabled', false);
                 } else {
-                     $('#ElementModal .JS_V').prop('disabled', true);
+                     jQuery('#ElementModal .JS_V').prop('disabled', true);
                 }
             })
             //КОНЕЦ блокировка кнопки "V"
@@ -398,7 +400,7 @@ $(document).ready(function () {
 
 //=========================ModalCalculateV3=====================================
 //====================вычисления в модульном окне==========
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let Iam,
         table,
         line,
@@ -408,20 +410,20 @@ $(document).ready(function() {
     let arrName=[];
     let arrScore=[];
 
-    $('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
-        Iam=$(this);
+    jQuery('.JS_Name, .JS_Level, .JS_Rotation').click(function() {
+        Iam=jQuery(this);
     })
 
-    $('.tabCalc-link').click(function() {
+    jQuery('.tabCalc-link').click(function() {
         CleanerModalArrs();
     })
 
 //=============================перенос информации с экрана для выбора значения атрибута элемента
-    $(document).ready(function () {
+    jQuery(document).ready(function () {
         let Val_IamModal;
 
-       $('#ElementModal .JS_ButtonModal').click(function() {
-            Val_IamModal=$(this).val();
+       jQuery('#ElementModal .JS_ButtonModal').click(function() {
+            Val_IamModal=jQuery(this).val();
             AddInLine_ValButtonModal();
             CheckClass();
             DirectorModal();
@@ -445,16 +447,16 @@ $(document).ready(function() {
         }
     })
 //=============================КОНЕЦ перенос информации с экрана для выбора значения атрибута элемента
-    $('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
-        Iam=$(this);
-        if(!$('#ElementModal .JS_Fly').hasClass('active') && !$('#ElementModal .JS_ChangeLeg').hasClass('active')){
-            $('#ElementModal .JS_V').removeClass('active activeColor');
+    jQuery('#ElementModal .JS_Fly, #ElementModal .JS_ChangeLeg').click(function() {
+        Iam=jQuery(this);
+        if(!jQuery('#ElementModal .JS_Fly').hasClass('active') && !jQuery('#ElementModal .JS_ChangeLeg').hasClass('active')){
+            jQuery('#ElementModal .JS_V').removeClass('active activeColor');
         }
         DirectorModal();
     })
 
-    $('#ElementModal').find('.JS_V, .JS_Galka, .JS_Edge, .JS_RemoveJump').click(function() {
-        Iam=$(this);
+    jQuery('#ElementModal').find('.JS_V, .JS_Galka, .JS_Edge, .JS_RemoveJump').click(function() {
+        Iam=jQuery(this);
         DirectorModal();
     })
 
@@ -471,7 +473,7 @@ $(document).ready(function() {
         MakeTheName_Modal(0);
         CleanerModalArrs();
         Iam.closest('.JS_Section-Table').find('.JS_Section-El').each(function(){
-            line=$(this);
+            line=jQuery(this);
             DirectorLine();
             PusherInArr_forModal();
         })
@@ -490,8 +492,8 @@ $(document).ready(function() {
             arrName.push(linename);
             arrScore.push(linescores);
         }
-            arrNamesInMain[NameOfProperty]=$.extend(true, [], arrName);
-            arrScoresInMain[NameOfProperty]=$.extend(true, [], arrScore);
+            arrNamesInMain[NameOfProperty]=jQuery.extend(true, [], arrName);
+            arrScoresInMain[NameOfProperty]=jQuery.extend(true, [], arrScore);
 
     }
 
@@ -508,7 +510,7 @@ $(document).ready(function() {
     function GetLineName() {
         linename=''
         line.find('.JS_Button.active').each(function (index) {
-            linename=linename+$(this).val();
+            linename=linename+jQuery(this).val();
         })
         return;
     }
@@ -560,8 +562,8 @@ $(document).ready(function() {
     //===============КОНЕЦ подсчет баллов====================================================
 
     function PrinterModal(){
-        $('#ElementModal .headeroutput-name').text(arrName.join('+'));
-        $('#ElementModal .headeroutput-scores').text(tablescores.toFixed(2));
+        jQuery('#ElementModal .headeroutput-name').text(arrName.join('+'));
+        jQuery('#ElementModal .headeroutput-scores').text(tablescores.toFixed(2));
         return;
     }
 })
@@ -589,10 +591,10 @@ let arrNamesInMain={};
 let arrScoresInMain={};
 let arrLineScores={};
 
-$(document).ready(function () {
-    $('.JS_Section-Table').find('.boxoutput-name, .JS_Goe, .JS_X').click(function() {
-        Ich=$(this);
-        sectionINmain=$(this).closest('.JS_Section-El');
+jQuery(document).ready(function () {
+    jQuery('.JS_Section-Table').find('.boxoutput-name, .JS_Goe, .JS_X').click(function() {
+        Ich=jQuery(this);
+        sectionINmain=jQuery(this).closest('.JS_Section-El');
         GetID();
     })
 })
@@ -609,11 +611,11 @@ function MakeTheName_Modal(index) {
 }
 //====КОНЕЦ создание имени====
 
-const BUTTON_EU=$('#jumps .JS_ButtonModal[value="Eu"]'),
-      BUTTON_A=$('#jumps .JS_ButtonModal[value="A"]'),
-      BUTTON_ROTATION=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
-      BUTTON_CHSQ=$('#steps .JS_ButtonModal[value="ChSq"]'),
-      BUTTON_STEPLEVEL=$('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(0) .JS_Level');
+const BUTTON_EU=jQuery('#jumps .JS_ButtonModal[value="Eu"]'),
+      BUTTON_A=jQuery('#jumps .JS_ButtonModal[value="A"]'),
+      BUTTON_ROTATION=jQuery('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(2) .JS_Section-El:eq(1) .JS_Rotation'),
+      BUTTON_CHSQ=jQuery('#steps .JS_ButtonModal[value="ChSq"]'),
+      BUTTON_STEPLEVEL=jQuery('#ElementModal .JS_Section-Tables .JS_Section-Table:eq(0) .JS_Level');
 
 
 function ResetModal(Iam) {
@@ -623,10 +625,10 @@ function ResetModal(Iam) {
     Hide_HeadersSections(Iam);
 
     ShowHeader();
-    $('#ElementModal').find('.JS_Section-Table .JS_Section-El').not(':only-child').not(':first').removeClass('active');
+    jQuery('#ElementModal').find('.JS_Section-Table .JS_Section-El').not(':only-child').not(':first').removeClass('active');
     section.find('.headeroutput-name').val('');
     section.find('.headeroutput-scores').val('0.00');
-    $('#ElementModal').find('.JS_RemoveJump, .JS_AddJump').prop('disabled', true);
+    jQuery('#ElementModal').find('.JS_RemoveJump, .JS_AddJump').prop('disabled', true);
     return;
 }
 function ResetButtons(section) {
@@ -634,14 +636,14 @@ function ResetButtons(section) {
     section.find('.JS_Name').val('элемент');
     section.find('.JS_Level').val('B').prop('disabled', false);
     section.find('.JS_Rotation').val('1').prop('disabled', false);
-    $('#ElementModal .JS_V').prop('disabled', true);
+    jQuery('#ElementModal .JS_V').prop('disabled', true);
     section.find('.lineoutput-scores').text('0.00');
     section.find('.JS_Edge').prop('disabled', true);
 
 }
 
 function ShowHeader() {
-    $('#header_title').addClass('active');
+    jQuery('#header_title').addClass('active');
     return ;
 }
 function Hide_HeadersSections(Iam) {
@@ -651,8 +653,8 @@ function Hide_HeadersSections(Iam) {
 //======================КОНЕЦ ГЛОБАЛЬНЫЕ служебные функции======================
 
 //======================сброс массивов одной линии==============================
-$(document).ready(function() {
-    $('#ElementModal .JS_Reset').click(function(){
+jQuery(document).ready(function() {
+    jQuery('#ElementModal .JS_Reset').click(function(){
         MakeTheName_Modal(0);
         ResetModalArrs();
     })
@@ -670,10 +672,10 @@ $(document).ready(function() {
 //===================КОНЕЦ сброс массивов одной линии===================
 
 //==================сброс массивов всей таблицы============================
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let section;
-    $('#MainTable .JS_Reset').click(function() {
-        section=$(this).closest('.JS_Section-Table');
+    jQuery('#MainTable .JS_Reset').click(function() {
+        section=jQuery(this).closest('.JS_Section-Table');
         ResetAllArrs();
         CleanUpMainTable();
     })
@@ -722,7 +724,7 @@ $(document).ready(function() {
 //=========================КОНЕЦ Director===================================================
 
 //=========================Compiling========================================================
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
     let Iam,
         IamModal,
@@ -732,9 +734,9 @@ $(document).ready(function() {
     let arrTemporaryAble=[];
     let arrTemporaryVal=[];
 
-    $('#ElementModal .JS_Save').click(function() {
-        Iam=$(this);
-        IamModal=$(this).closest('.JS_Section-Modal');
+    jQuery('#ElementModal .JS_Save').click(function() {
+        Iam=jQuery(this);
+        IamModal=jQuery(this).closest('.JS_Section-Modal');
         IamSectionTable=IamModal.find('.JS_Section-Tables .JS_Section-Table');
         DirectorCompilingConfig()
     })
@@ -749,7 +751,7 @@ $(document).ready(function() {
 
     function FindActiveTab() {
         IamModal.find('.tabCalc-links .tabCalc-link').each(function(index) {
-            if($(this).hasClass('active')){
+            if(jQuery(this).hasClass('active')){
                 arrActiveTabs[NameOfProperty]=index;
                 IndexT=index;
                 return;
@@ -760,9 +762,9 @@ $(document).ready(function() {
     function GetSectionInfo() {
         Cleaner_arrTemporaryClass();
         IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function() {
-            arrTemporaryClass.push($(this).attr('class'))
+            arrTemporaryClass.push(jQuery(this).attr('class'))
         })
-        arrLinesClass[NameOfProperty]=$.extend(true, [], arrTemporaryClass);
+        arrLinesClass[NameOfProperty]=jQuery.extend(true, [], arrTemporaryClass);
         return;
     }
 
@@ -772,26 +774,26 @@ $(document).ready(function() {
         Cleaner_arrTemporaryVal();
         IamSectionTable.eq(IndexT).find('.JS_Button, .JS_RemoveJump, .JS_AddJump').each(function(index) {
 
-            if($(this).hasClass('activeColor')){
+            if(jQuery(this).hasClass('activeColor')){
                 arrTemporaryClass.push('active activeColor')
             }
             else {
                 arrTemporaryClass.push('')
             }
-            arrTemporaryAble.push($(this).prop('disabled'));
-            arrTemporaryVal.push($(this).val())
+            arrTemporaryAble.push(jQuery(this).prop('disabled'));
+            arrTemporaryVal.push(jQuery(this).val())
         })
-        arrButtonsClass[NameOfProperty]=$.extend(true, [], arrTemporaryClass);
-        arrButtonsAbility[NameOfProperty]=$.extend(true, [], arrTemporaryAble);
-        arrButtonsVal[NameOfProperty]=$.extend(true, [], arrTemporaryVal);
+        arrButtonsClass[NameOfProperty]=jQuery.extend(true, [], arrTemporaryClass);
+        arrButtonsAbility[NameOfProperty]=jQuery.extend(true, [], arrTemporaryAble);
+        arrButtonsVal[NameOfProperty]=jQuery.extend(true, [], arrTemporaryVal);
         return;
     }
     function GetOutputInfo() {
         Cleaner_arrTemporaryVal();
         IamModal.find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function() {
-            arrTemporaryVal.push($(this).val());
+            arrTemporaryVal.push(jQuery(this).val());
         })
-        arrOutputs[NameOfProperty]=$.extend(true, [], arrTemporaryVal);
+        arrOutputs[NameOfProperty]=jQuery.extend(true, [], arrTemporaryVal);
     }
 
     function Cleaner_arrTemporaryClass() {
@@ -811,13 +813,13 @@ $(document).ready(function() {
 //=========================КОНЕЦ Compiling========================================================
 
 //=========================Set====================================================================
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
       let IndexT;
-    const Iam=$('#ElementModal .tabCalc-links .tabCalc-link');
-    const IamSectionTable=$('#ElementModal .JS_Section-Tables .JS_Section-Table');
+    const Iam=jQuery('#ElementModal .tabCalc-links .tabCalc-link');
+    const IamSectionTable=jQuery('#ElementModal .JS_Section-Tables .JS_Section-Table');
 
-    $('.boxoutput-name').click(function() {
+    jQuery('.boxoutput-name').click(function() {
         DirectorSetConfig();
     })
 
@@ -854,30 +856,30 @@ $(document).ready(function() {
 
     function SetLines() {
         IamSectionTable.eq(IndexT).find('.JS_Section-El').each(function(index) {
-            $(this).addClass(arrLinesClass[NameOfProperty][index]);
+            jQuery(this).addClass(arrLinesClass[NameOfProperty][index]);
         })
         return;
     }
 
     function SetButtons() {
         IamSectionTable.eq(IndexT).find('.JS_Button, .JS_RemoveJump, .JS_AddJump').each(function(index) {
-            $(this).addClass(arrButtonsClass[NameOfProperty][index]);
-            $(this).val(arrButtonsVal[NameOfProperty][index]);
-            $(this).prop('disabled', arrButtonsAbility[NameOfProperty][index]);
+            jQuery(this).addClass(arrButtonsClass[NameOfProperty][index]);
+            jQuery(this).val(arrButtonsVal[NameOfProperty][index]);
+            jQuery(this).prop('disabled', arrButtonsAbility[NameOfProperty][index]);
         })
         return;
     }
 
     function SetOutputs() {
-        $('#ElementModal').find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function(index) {
-            $(this).text(arrOutputs[NameOfProperty][index]);
+        jQuery('#ElementModal').find('.headeroutput-name, .headeroutput-scores, .lineoutput-scores').each(function(index) {
+            jQuery(this).text(arrOutputs[NameOfProperty][index]);
         })
     }
 })
 //=========================КОНЕЦ Set====================================================================
 
 //=========================MainCalculateV3==============================================================
-$(document).ready(function() {
+jQuery(document).ready(function() {
     let Iam,
         buttonX,
         buttonGoe,
@@ -890,12 +892,12 @@ $(document).ready(function() {
     let arrNameZero=[''];
 
 
-    $('.boxoutput-name').click(function() {
-        Iam=$(this);
-        buttonX=$(this).closest('.JS_Section-El').find('.JS_X');
-        buttonGoe=$(this).closest('.JS_Section-El').find('.JS_Goe');
+    jQuery('.boxoutput-name').click(function() {
+        Iam=jQuery(this);
+        buttonX=jQuery(this).closest('.JS_Section-El').find('.JS_X');
+        buttonGoe=jQuery(this).closest('.JS_Section-El').find('.JS_Goe');
     })
-    $('#ElementModal .JS_Save').click(function(){
+    jQuery('#ElementModal .JS_Save').click(function(){
         if(IndexT==2){
             buttonX.prop('disabled', false);
         }
@@ -905,30 +907,30 @@ $(document).ready(function() {
         buttonGoe.removeClass('active activeColor').val(0);
         DirectorMain();
     })
-    $('#ElementModal .JS_Reset').click(function() {
+    jQuery('#ElementModal .JS_Reset').click(function() {
         MakeTheName_Modal(0);
         arrScoresInMain[NameOfProperty]=0;
-        arrNamesInMain[NameOfProperty]=$.extend(true, [], arrNameZero);
+        arrNamesInMain[NameOfProperty]=jQuery.extend(true, [], arrNameZero);
         buttonX.prop('disabled', true).removeClass('active activeColor');
         buttonGoe.removeClass('active activeColor').val(0);
         DirectorMain();
     })
 
 
-    $('.JS_Section-Table .JS_X').click(function() {
-        Iam=$(this);
+    jQuery('.JS_Section-Table .JS_X').click(function() {
+        Iam=jQuery(this);
         DirectorMain();
     })
 
-    $(document).ready(function() {
+    jQuery(document).ready(function() {
         let Val_IamModal;
 
-        $('.JS_Section-Table .JS_Goe').click(function() {
-            Iam=$(this);
+        jQuery('.JS_Section-Table .JS_Goe').click(function() {
+            Iam=jQuery(this);
         })
 
-        $('#GoeModal .JS_ButtonModal').click(function() {
-            Val_IamModal=$(this).val();
+        jQuery('#GoeModal .JS_ButtonModal').click(function() {
+            Val_IamModal=jQuery(this).val();
             Iam.val(Val_IamModal);
             Iam.addClass('active activeColor');
             DirectorMain();
@@ -945,8 +947,8 @@ $(document).ready(function() {
     function CounterMain() {
         fullscores=0;
         Iam.closest('.JS_Section-Table').find('.JS_Section-El').each(function(index) {
-            Ich=$(this).find('.boxoutput-name');
-            sectionINmain=$(this);
+            Ich=jQuery(this).find('.boxoutput-name');
+            sectionINmain=jQuery(this);
             GetID();
             MakeTheName_Modal(0);
 
@@ -976,7 +978,7 @@ $(document).ready(function() {
     function CheckAvailabilityInfo() {
         if(arrNamesInMain[NameOfProperty]==undefined){
             arrScoresInMain[NameOfProperty]=0;
-            arrNamesInMain[NameOfProperty]=$.extend(true, [], arrNameZero);
+            arrNamesInMain[NameOfProperty]=jQuery.extend(true, [], arrNameZero);
             arrLineScores[NameOfProperty]=0;
         }
         return;
