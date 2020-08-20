@@ -2,7 +2,7 @@
 /*стили вывода имени элемента в таблице*/
 .boxoutput-name {
     cursor:pointer;
-	/*border: 1px solid #ccc;*/
+	border: 1px solid #ccc;
 	border-radius: 5px;
 	box-shadow:0px 0px 3px 0px #999 inset;
 	background:none;
